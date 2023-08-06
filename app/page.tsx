@@ -1,20 +1,140 @@
 import Image from 'next/image';
-import smashing from 'public/images/home/smashing.jpg';
-import summit from 'public/images/home/summit.jpg';
-import reactathon from 'public/images/home/reactathon.jpg';
-import ship from 'public/images/home/ship.jpg';
-import filming from 'public/images/home/filming.jpg';
-import meetups from 'public/images/home/meetups.jpg';
-import vercel from 'public/images/home/vercel.jpg';
-import avatar from 'app/avatar.jpg';
-import ViewCounter from 'app/blog/view-counter';
-import {
-  getLeeYouTubeSubs,
-  getVercelYouTubeSubs,
-  getViewsCount,
-} from 'lib/metrics';
-import { Suspense } from 'react';
+import satyam from 'public/images/home/satyam_profile.jpeg'
+import anshul from 'public/images/home/anshul_profile.jpeg'
+import atul from 'public/images/home/atul_profile.jpeg'
+import karamjeet from 'public/images/home/karamjeet_profile.jpeg'
+import akhil from 'public/images/home/akhil_profile.jpeg'
+import kunal from 'public/images/home/kunal_bhatia_profile.jpeg'
+import fareed from 'public/images/home/fareed_profile.jpeg'
+import themring from 'public/images/home/themring_profile.jpeg'
+import hemant from 'public/images/home/hemant-negi.jpeg'
+import hemantLinkdin from 'public/images/home/hn-linkdin.jpeg'
+import hemantLeetocde from 'public/images/home/leetcode.jpeg'
+import hemantGithub from 'public/images/home/hemantGithub.png'
+import hemantBehance from 'public/images/home/behance.jpg'
+import hemantTwitter from 'public/images/home/twitter.jpg';
+import back from 'public/images/home/back.jpg';
+import handstand from 'public/images/home/handstand.jpg';
+import skipping from 'public/images/home/skipping.jpg';
+import running from 'public/images/home/running.jpg'
+import humanFlag from 'public/images/home/humanFlag.jpeg';
+import swimming from 'public/images/home/swimming.jpg';
 
+
+const ICONS = {
+  linkdin: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z" /><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z" /></svg>,
+  instagram: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5" /><stop offset=".328" stop-color="#ff543f" /><stop offset=".348" stop-color="#fc5245" /><stop offset=".504" stop-color="#e64771" /><stop offset=".643" stop-color="#d53e91" /><stop offset=".761" stop-color="#cc39a4" /><stop offset=".841" stop-color="#c837ab" /></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8ma)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20 c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20 C42.014,38.383,38.417,41.986,34.017,41.99z" /><radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813" gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4168c9" /><stop offset=".999" stop-color="#4168c9" stop-opacity="0" /></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8mb)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20 c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20 C42.014,38.383,38.417,41.986,34.017,41.99z" /><path fill="#fff" d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5 s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" /><circle cx="31.5" cy="16.5" r="1.5" fill="#fff" /><path fill="#fff" d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12 C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" /></svg>,
+  leetcode: <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LeetCode</title><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" /></svg>,
+  github: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px" height="30px">    <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z" /></svg>,
+  twitter: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#03A9F4" d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429" /></svg>,
+  behance: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#2196F3" d="M6,10c0-2.209,1.791-4,4-4h28c2.209,0,4,1.791,4,4v28c0,2.209-1.791,4-4,4H10c-2.209,0-4-1.791-4-4V10z" /><path fill="#FFF" d="M27 17H34V19H27zM21.512 23.428c.585-.285 1.903-.934 1.903-2.857 0-3.617-3.952-3.57-4.683-3.57H12v14h7.025C19.61 31 24 30.835 24 26.999 24 24.524 22.39 23.714 21.512 23.428zM15 19.428h2.928c.292 0 2.195.104 2.195 1.572 0 1.467-1.463 1.714-1.902 1.714H15V19.428zM18.336 28.571h-3.367v-3.856h3.367c.731 0 2.341.237 2.341 2C20.677 28.476 18.628 28.571 18.336 28.571zM32.438 28.395c-.465.289-.929.436-1.549.436-2.326 0-2.789-1.961-2.789-2.83H36c0-.869 0-1.511-.155-2.236C35.689 23.04 34.63 20 30.734 20 25.289 20 25 24.778 25 25.5c0 .723.156 1.593.467 2.171.309.724.619 1.304 1.084 1.736.464.435 1.083.866 1.703 1.157C29.028 30.855 29.803 31 30.578 31c1.238 0 2.324-.288 3.253-.868.931-.579 1.55-1.448 2.014-2.606h-2.633C33.057 27.816 32.902 28.104 32.438 28.395zM30.734 22.027c1.518 0 2.168 1.592 2.322 2.314H28.1C28.1 24.198 28.471 22.027 30.734 22.027z" /></svg>,
+  javascript: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#ffd600" d="M6,42V6h36v36H6z" /><path fill="#000001" d="M29.538 32.947c.692 1.124 1.444 2.201 3.037 2.201 1.338 0 2.04-.665 2.04-1.585 0-1.101-.726-1.492-2.198-2.133l-.807-.344c-2.329-.988-3.878-2.226-3.878-4.841 0-2.41 1.845-4.244 4.728-4.244 2.053 0 3.528.711 4.592 2.573l-2.514 1.607c-.553-.988-1.151-1.377-2.078-1.377-.946 0-1.545.597-1.545 1.377 0 .964.6 1.354 1.985 1.951l.807.344C36.452 29.645 38 30.839 38 33.523 38 36.415 35.716 38 32.65 38c-2.999 0-4.702-1.505-5.65-3.368L29.538 32.947zM17.952 33.029c.506.906 1.275 1.603 2.381 1.603 1.058 0 1.667-.418 1.667-2.043V22h3.333v11.101c0 3.367-1.953 4.899-4.805 4.899-2.577 0-4.437-1.746-5.195-3.368L17.952 33.029z" /></svg>,
+  react: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="40px" height="40px"><path fill="#8bb7f0" d="M46.5,40c0,3.593-2.907,6.5-6.5,6.5s-6.5-2.907-6.5-6.5s2.907-6.5,6.5-6.5S46.5,36.407,46.5,40z" /><path fill="#4e7ab5" d="M40,47c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S43.859,47,40,47z M40,34c-3.309,0-6,2.691-6,6 s2.691,6,6,6s6-2.691,6-6S43.309,34,40,34z" /><g><path fill="#8bb7f0" d="M24.474,75.503c-1.711,0-3.269-0.392-4.632-1.164c-2.28-1.293-3.856-3.521-4.686-6.62 c-0.965-3.607-0.85-8.398,0.332-13.878C5.956,50.562,0.5,45.531,0.5,40c0-5.532,5.455-10.562,14.987-13.84 c-1.182-5.481-1.298-10.272-0.333-13.879c0.83-3.1,2.406-5.328,4.685-6.62c1.362-0.772,2.921-1.164,4.632-1.164 c4.388,0,9.891,2.73,15.531,7.698c5.64-4.963,11.141-7.691,15.524-7.691c1.711,0,3.269,0.392,4.632,1.164 c2.277,1.291,3.854,3.515,4.684,6.611c0.966,3.606,0.85,8.398-0.333,13.88C74.043,29.437,79.5,34.468,79.5,40 s-5.457,10.563-14.991,13.842c1.182,5.481,1.298,10.272,0.332,13.878c-0.83,3.097-2.405,5.321-4.68,6.612 c-1.364,0.772-2.923,1.164-4.633,1.164c-4.386,0-9.889-2.728-15.527-7.689C34.361,72.774,28.859,75.503,24.474,75.503z M19.337,55.006c-0.991,4.717-1.102,8.747-0.316,11.679c0.542,2.026,1.481,3.431,2.794,4.175c0.753,0.427,1.648,0.644,2.659,0.644 c3.394,0,7.862-2.282,12.621-6.437c-2.385-2.402-4.713-5.121-6.928-8.091C26.336,56.56,22.696,55.898,19.337,55.006z M42.906,65.065c4.758,4.151,9.227,6.431,12.621,6.432c1.011,0,1.906-0.217,2.661-0.644c1.309-0.742,2.246-2.144,2.787-4.167 c0.786-2.934,0.676-6.963-0.315-11.679c-3.362,0.892-7.003,1.554-10.833,1.97C47.613,59.947,45.288,62.665,42.906,65.065z M35.566,57.393c1.452,1.776,2.938,3.433,4.434,4.94c1.492-1.506,2.979-3.163,4.43-4.94C42.939,57.464,41.454,57.5,40,57.5 C38.545,57.5,37.059,57.464,35.566,57.393z M32.349,53.179C34.844,53.392,37.417,53.5,40,53.5c2.585,0,5.155-0.108,7.646-0.32 c1.486-2.084,2.903-4.268,4.214-6.495c1.268-2.155,2.461-4.404,3.547-6.686c-1.083-2.276-2.275-4.524-3.546-6.684 c-1.308-2.222-2.725-4.406-4.215-6.495C45.157,26.608,42.587,26.5,40,26.5c-2.588,0-5.159,0.108-7.647,0.321 c-1.49,2.086-2.909,4.27-4.219,6.495c-1.27,2.159-2.462,4.407-3.546,6.686c1.082,2.274,2.274,4.522,3.545,6.684 C29.437,48.901,30.854,51.084,32.349,53.179z M57.491,44.779c-0.706,1.346-1.438,2.666-2.185,3.934 c-0.753,1.282-1.554,2.568-2.386,3.836c2.374-0.366,4.645-0.835,6.771-1.4C59.101,49.1,58.362,46.963,57.491,44.779z M20.304,51.148c2.127,0.564,4.397,1.034,6.768,1.4c-0.837-1.276-1.638-2.563-2.386-3.835c-0.745-1.267-1.478-2.585-2.183-3.931 C21.636,46.956,20.898,49.091,20.304,51.148z M59.816,40c1.528,3.391,2.773,6.743,3.708,9.977C70.926,47.373,75.5,43.574,75.5,40 s-4.574-7.373-11.976-9.977C62.591,33.257,61.345,36.609,59.816,40z M16.472,30.025C9.073,32.628,4.5,36.427,4.5,40 c0,3.574,4.573,7.373,11.974,9.976c0.934-3.235,2.179-6.587,3.705-9.974C18.652,36.614,17.407,33.262,16.472,30.025z M20.303,28.852c0.594,2.054,1.332,4.19,2.2,6.368c0.704-1.342,1.436-2.661,2.184-3.932c0.752-1.279,1.553-2.565,2.388-3.836 C24.701,27.817,22.431,28.287,20.303,28.852z M52.922,27.451c0.837,1.277,1.638,2.563,2.386,3.837 c0.746,1.267,1.479,2.586,2.185,3.932c0.869-2.177,1.607-4.313,2.201-6.369C57.564,28.286,55.294,27.816,52.922,27.451z M24.471,8.497c-1.011,0-1.905,0.216-2.657,0.644c-1.312,0.744-2.252,2.149-2.795,4.175c-0.785,2.935-0.675,6.964,0.317,11.679 c3.36-0.892,7.002-1.555,10.834-1.971c2.217-2.971,4.545-5.688,6.927-8.088C32.337,10.779,27.866,8.497,24.471,8.497z M49.828,23.023c3.83,0.416,7.471,1.078,10.833,1.97c0.992-4.716,1.103-8.746,0.316-11.68c-0.542-2.022-1.48-3.424-2.79-4.166 c-0.754-0.427-1.649-0.644-2.661-0.644c-3.393,0-7.86,2.281-12.619,6.433C45.287,17.335,47.613,20.053,49.828,23.023z M40,22.5 c1.454,0,2.939,0.036,4.431,0.107c-1.45-1.774-2.936-3.43-4.429-4.938c-1.497,1.51-2.982,3.166-4.432,4.938 C37.061,22.536,38.546,22.5,40,22.5z" /><path fill="#4e7ab5" d="M24.471,4.997c4.494,0,9.996,2.91,15.532,7.867c5.535-4.953,11.034-7.86,15.524-7.86 c1.623,0,3.099,0.37,4.386,1.099c2.156,1.222,3.652,3.343,4.446,6.306c1.077,3.917,0.851,8.74-0.434,14.08 C73.147,29.57,79,34.431,79,40s-5.853,10.43-15.076,13.512c1.341,5.773,1.566,10.726,0.434,14.079 c-0.794,2.962-2.289,5.084-4.443,6.306C58.626,74.627,57.455,75,55.833,75c-0.001,0-0.416,0-0.417,0 c-4.492,0-9.882-2.91-15.416-7.861c-5.535,4.956-11.035,7.864-15.527,7.864c-1.623,0-3.099-0.37-4.386-1.099 c-2.158-1.225-3.655-3.349-4.448-6.314c-1.19-3.717-0.95-8.603,0.434-14.079C6.852,50.429,1,45.569,1,40 c0-5.568,5.852-10.429,15.072-13.511C15.385,23.43,14.946,20.59,14.931,18c-0.012-2.046,0.267-3.949,0.707-5.59 c0.794-2.966,2.29-5.09,4.448-6.314C21.372,5.366,22.848,4.997,24.471,4.997 M18.958,25.614c3.477-0.955,7.338-1.677,11.483-2.117 c2.382-3.21,4.875-6.096,7.386-8.584c-4.872-4.346-9.616-6.917-13.356-6.917c-1.099,0-2.075,0.238-2.904,0.709 c-1.433,0.813-2.452,2.32-3.031,4.481C17.678,16.388,17.873,20.716,18.958,25.614 M61.039,25.613 c1.085-4.898,1.28-9.227,0.422-12.429c-0.578-2.157-1.597-3.661-3.027-4.472c-0.83-0.471-1.809-0.709-2.907-0.709 c-3.737,0-8.478,2.568-13.349,6.91c2.51,2.488,5,5.374,7.38,8.583C53.701,23.936,57.562,24.658,61.039,25.613 M34.477,23.166 c1.802-0.107,3.609-0.2,5.488-0.2c1.879,0,3.755,0.094,5.557,0.2c-1.808-2.279-3.664-4.361-5.521-6.204 C38.144,18.805,36.287,20.887,34.477,23.166 M40,54c2.761,0,5.404-0.121,7.918-0.342c1.519-2.117,2.988-4.365,4.372-6.719 c1.353-2.299,2.577-4.626,3.67-6.939c-1.093-2.313-2.317-4.639-3.669-6.937c-1.385-2.355-2.853-4.602-4.373-6.719 C45.405,26.121,42.762,26,40,26s-5.406,0.121-7.92,0.343c-1.521,2.117-2.991,4.365-4.376,6.719 c-1.352,2.299-2.576,4.626-3.669,6.939c1.093,2.313,2.316,4.639,3.668,6.937c1.385,2.354,2.854,4.602,4.374,6.719 C34.592,53.879,37.237,54,40,54 M57.546,36.413c1.125-2.709,2.056-5.369,2.766-7.913c-2.553-0.702-5.373-1.282-8.428-1.707 c1.028,1.527,2.029,3.11,2.992,4.748C55.83,33.16,56.717,34.788,57.546,36.413 M22.449,36.414c0.828-1.625,1.716-3.253,2.668-4.873 c0.964-1.638,1.966-3.22,2.995-4.747c-3.055,0.424-5.875,1.005-8.428,1.707C20.394,31.045,21.325,33.704,22.449,36.414 M63.188,50.622C71.264,47.886,76,43.866,76,40s-4.736-7.886-12.812-10.622c-0.953,3.405-2.269,6.983-3.92,10.621 C60.919,43.638,62.235,47.216,63.188,50.622 M16.81,50.621c0.952-3.404,2.267-6.982,3.918-10.619 c-1.651-3.638-2.967-7.217-3.919-10.622C8.734,32.116,4,36.135,4,40C4,43.866,8.735,47.885,16.81,50.621 M51.884,53.207 c3.055-0.424,5.875-1.004,8.428-1.707c-0.711-2.544-1.642-5.204-2.766-7.914c-0.829,1.625-1.717,3.253-2.67,4.873 C53.913,50.097,52.912,51.68,51.884,53.207 M28.109,53.206c-1.028-1.527-2.029-3.109-2.993-4.746 c-0.952-1.619-1.839-3.246-2.667-4.87c-1.124,2.708-2.054,5.367-2.764,7.91C22.237,52.201,25.056,52.781,28.109,53.206 M24.474,72.003c3.739,0,8.481-2.57,13.352-6.914c-2.513-2.489-5.005-5.376-7.388-8.587c-4.143-0.439-8.002-1.161-11.478-2.116 c-1.084,4.898-1.279,9.226-0.422,12.428c0.578,2.16,1.598,3.667,3.03,4.48C22.396,71.765,23.375,72.003,24.474,72.003 M55.527,71.997L55.527,71.997c1.099,0,2.076-0.238,2.907-0.709c1.43-0.811,2.447-2.315,3.024-4.473 c0.858-3.203,0.663-7.531-0.421-12.428c-3.477,0.955-7.337,1.677-11.481,2.116c-2.38,3.21-4.871,6.096-7.381,8.585 C47.046,69.428,51.788,71.996,55.527,71.997 M40,63.04c1.857-1.844,3.713-3.927,5.522-6.206c-1.801,0.107-3.559,0.333-5.439,0.333 c-1.881,0-3.807-0.226-5.609-0.333C36.284,59.114,38.142,61.197,40,63.04 M24.116,4.072c-1.799,0-3.085,0.338-4.523,1.153 c-2.399,1.361-4.055,3.691-4.921,6.926c-0.96,3.587-0.877,8.302,0.236,13.681C5.419,29.189,0,34.325,0,40 c0,5.676,5.42,10.811,14.909,14.168c-1.113,5.379-1.196,10.094-0.235,13.681c0.865,3.233,2.52,5.563,4.921,6.926 c1.44,0.816,3.17,1.163,4.968,1.163c4.487,0,9.753-2.535,15.438-7.466c5.684,4.926,11.039,7.524,15.525,7.525 c1.799,0,3.441-0.413,4.881-1.229c2.397-1.359,4.051-3.686,4.916-6.917c0.961-3.588,0.878-8.303-0.235-13.681 C74.579,50.812,80,45.676,80,40s-5.42-10.812-14.911-14.169c1.114-5.38,1.196-10.095,0.235-13.682 c-0.866-3.231-2.521-5.558-4.919-6.917c-1.439-0.815-3.081-1.229-4.879-1.229c-4.485,0-9.839,2.599-15.524,7.527 c-5.686-4.932-11.066-7.461-15.554-7.461L24.116,4.072z M19.72,24.377c-0.462-2.324-0.772-4.502-0.789-6.412 c-0.015-1.72,0.221-3.217,0.57-4.521c0.507-1.892,1.368-3.194,2.559-3.87c0.676-0.384,1.5-0.644,2.423-0.644 c3.181,0,7.367,2.178,11.883,6.034c-2.221,2.273-4.392,4.819-6.466,7.585C26.315,22.949,22.897,23.562,19.72,24.377L19.72,24.377z M43.638,14.966c4.515-3.853,8.711-5.963,11.888-5.963c0.924,0,1.737,0.195,2.414,0.579c1.189,0.674,2.049,1.973,2.555,3.861 c0.874,2.818,0.761,6.564-0.218,10.933c-3.177-0.814-6.594-1.428-10.178-1.826C48.026,19.785,45.857,17.239,43.638,14.966 L43.638,14.966z M36.673,22.06c1.096-1.3,2.209-2.53,3.328-3.678c1.119,1.148,2.231,2.378,3.326,3.678 C42.208,22.02,41.095,22,40,22S37.793,22.02,36.673,22.06L36.673,22.06z M32.625,27.3c2.405-0.199,4.883-0.341,7.375-0.341 c2.491,0,4.969,0.142,7.373,0.341c1.432,2.019,2.796,4.126,4.056,6.269c1.222,2.078,2.373,4.239,3.423,6.43 c-1.051,2.192-2.202,4.354-3.424,6.432c-1.261,2.144-2.624,4.25-4.056,6.269c-2.403,0.199-4.881,0.466-7.372,0.466 c-2.493,0-4.972-0.268-7.378-0.467c-1.433-2.018-2.797-4.125-4.058-6.269c-1.222-2.077-2.372-4.238-3.422-6.43 c1.05-2.192,2.201-4.354,3.423-6.432C29.827,31.425,31.192,29.318,32.625,27.3L32.625,27.3z M57.422,34.024 c-0.549-1.018-1.112-2.018-1.683-2.99c-0.57-0.969-1.167-1.942-1.785-2.909c1.774,0.302,3.485,0.663,5.114,1.08 C58.601,30.771,58.05,32.383,57.422,34.024L57.422,34.024z M20.928,29.205c1.629-0.417,3.34-0.778,5.114-1.08 c-0.619,0.967-1.216,1.94-1.786,2.908c-0.571,0.972-1.134,1.972-1.683,2.99C21.945,32.384,21.395,30.772,20.928,29.205 L20.928,29.205z M60.365,39.999c1.415-3.162,2.587-6.292,3.49-9.326C70.758,33.192,75,36.721,75,40s-4.242,6.808-11.145,9.327 C62.951,46.292,61.78,43.161,60.365,39.999L60.365,39.999z M16.142,49.326C9.241,46.807,5,43.278,5,40s4.241-6.807,11.141-9.326 c0.903,3.035,2.074,6.165,3.489,9.327C18.216,43.162,17.045,46.292,16.142,49.326L16.142,49.326z M53.953,51.876 c0.618-0.968,1.216-1.941,1.785-2.909c0.572-0.972,1.135-1.973,1.684-2.991c0.628,1.641,1.178,3.254,1.646,4.821 C57.438,51.212,55.727,51.574,53.953,51.876L53.953,51.876z M20.929,50.795c0.467-1.566,1.017-3.177,1.644-4.816 c0.548,1.017,1.111,2.017,1.682,2.988c0.569,0.968,1.166,1.94,1.785,2.908C24.267,51.572,22.557,51.211,20.929,50.795 L20.929,50.795z M24.474,71.003c-0.924,0-1.736-0.195-2.413-0.579c-1.19-0.676-2.051-1.977-2.557-3.869 c-0.831-2.845-0.737-6.592,0.218-10.933c3.176,0.814,6.592,1.428,10.175,1.826c2.075,2.766,4.246,5.313,6.468,7.588 C31.85,68.893,27.653,71.004,24.474,71.003L24.474,71.003L24.474,71.003z M50.098,57.45c3.584-0.399,7.001-1.012,10.178-1.826 c1.105,4.74,1.192,8.518,0.217,10.932c-0.505,1.889-1.364,3.188-2.552,3.861c-0.678,0.384-1.49,0.579-2.413,0.579v1l-0.001-1 c-3.18,0-7.377-2.11-11.891-5.961C45.856,62.762,48.025,60.216,50.098,57.45L50.098,57.45z M40,61.62 c-1.12-1.148-2.234-2.379-3.33-3.68C37.79,57.98,38.904,58,40,58c1.095,0,2.208-0.02,3.327-0.06 C42.232,59.241,41.119,60.472,40,61.62L40,61.62z" /></g></svg>,
+  node: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32px" height="32px"><path d="M 15.994141 3 C 15.629141 3 15.264219 3.0895313 14.949219 3.2695312 L 5.0390625 8.9902344 C 4.3990625 9.3602344 4 10.060781 4 10.800781 L 4 21.179688 C 4 21.929688 4.3990625 22.620234 5.0390625 22.990234 L 7.640625 24.490234 C 8.900625 25.110234 9.3499219 25.109375 9.9199219 25.109375 C 11.789922 25.109375 12.859375 23.979531 12.859375 22.019531 L 12.859375 11.310547 C 12.859375 11.150547 12.730312 11.019531 12.570312 11.019531 L 11.320312 11.019531 C 11.150313 11.019531 11.029297 11.150547 11.029297 11.310547 L 11.029297 22.009766 C 11.029297 22.889766 10.120391 23.749531 8.6503906 23.019531 L 5.9296875 21.449219 C 5.8296875 21.399219 5.7695313 21.289687 5.7695312 21.179688 L 5.7695312 10.810547 C 5.7695312 10.690547 5.8296875 10.589297 5.9296875 10.529297 L 15.839844 4.8105469 C 15.929844 4.7505469 16.050391 4.7505469 16.150391 4.8105469 L 26.060547 10.529297 C 26.160547 10.589297 26.220703 10.690781 26.220703 10.800781 L 26.220703 21.179688 C 26.220703 21.289687 26.160313 21.399219 26.070312 21.449219 L 16.150391 27.179688 C 16.060391 27.229688 15.929844 27.229688 15.839844 27.179688 L 13.289062 25.669922 C 13.219062 25.619922 13.120781 25.610391 13.050781 25.650391 C 12.340781 26.050391 12.210781 26.100078 11.550781 26.330078 C 11.390781 26.380078 11.140625 26.479766 11.640625 26.759766 L 14.949219 28.720703 C 15.269219 28.900703 15.630234 29 15.990234 29 C 16.360234 29 16.719062 28.900703 17.039062 28.720703 L 26.960938 22.990234 C 27.600938 22.620234 28 21.929688 28 21.179688 L 28 10.810547 C 28 10.060547 27.600938 9.37 26.960938 9 L 17.039062 3.2695312 C 16.724063 3.0895313 16.359141 3 15.994141 3 z M 18.660156 11.005859 C 15.830156 11.005859 14.140625 12.205078 14.140625 14.205078 C 14.140625 16.375078 15.819062 16.974141 18.539062 17.244141 C 21.789062 17.564141 22.039062 18.045547 22.039062 18.685547 C 22.039062 19.785547 21.150547 20.255859 19.060547 20.255859 C 16.430547 20.255859 15.850156 19.594922 15.660156 18.294922 C 15.640156 18.154922 15.520859 18.054688 15.380859 18.054688 L 14.089844 18.054688 C 13.929844 18.054688 13.810547 18.185938 13.810547 18.335938 C 13.810547 20.005937 14.720547 21.994141 19.060547 21.994141 C 22.200547 21.994141 24 20.755703 24 18.595703 C 24 16.455703 22.549766 15.884609 19.509766 15.474609 C 16.419766 15.074609 16.109375 14.864531 16.109375 14.144531 C 16.109375 13.544531 16.380156 12.755859 18.660156 12.755859 C 20.690156 12.755859 21.449766 13.194453 21.759766 14.564453 C 21.789766 14.694453 21.899062 14.794922 22.039062 14.794922 L 23.330078 14.794922 C 23.410078 14.794922 23.479063 14.755313 23.539062 14.695312 C 23.589062 14.645313 23.619375 14.564609 23.609375 14.474609 C 23.409375 12.114609 21.840156 11.005859 18.660156 11.005859 z" /></svg>,
+  graphql: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px" style={{ fill: '#dd34a6' }}><path d="M 25 2 C 22.788 2 21 3.788 21 6 C 21 6.319683 21.048567 6.6259743 21.119141 6.9238281 L 10.945312 12.310547 C 10.214286 11.510118 9.1715211 11 8 11 C 5.788 11 4 12.788 4 15 C 4 16.8551 5.2763474 18.409919 7 18.857422 L 7 31.142578 C 5.2764206 31.587904 4 33.135681 4 35 C 4 37.201 5.788 39 8 39 C 9.1715211 39 10.214286 38.489882 10.945312 37.689453 L 21.119141 43.076172 C 21.048567 43.374026 21 43.680317 21 44 C 21 46.212 22.788 48 25 48 C 27.212 48 29 46.201 29 44 C 29 43.680317 28.951433 43.374026 28.880859 43.076172 L 39.054688 37.689453 C 39.785714 38.489882 40.828479 39 42 39 C 44.212 39 46 37.201 46 35 C 46 33.135681 44.723579 31.587904 43 31.142578 L 43 18.857422 C 44.723653 18.409919 46 16.8551 46 15 C 46 12.788 44.212 11 42 11 C 40.828479 11 39.785714 11.510118 39.054688 12.310547 L 28.880859 6.9238281 C 28.951804 6.6260098 29 6.3189534 29 6 C 29 3.788 27.212 2 25 2 z M 22.054688 8.6894531 C 22.097766 8.7366217 22.132464 8.7908863 22.177734 8.8359375 L 9.0859375 31.167969 C 9.0569126 31.159764 9.0292907 31.148188 9 31.140625 L 9 18.857422 C 10.723579 18.412096 12 16.864319 12 15 C 12 14.680317 11.951433 14.374026 11.880859 14.076172 L 22.054688 8.6894531 z M 27.943359 8.6894531 L 38.119141 14.076172 C 38.048567 14.374026 38 14.680317 38 15 C 38 16.864319 39.276421 18.412096 41 18.857422 L 41 31.140625 C 40.970709 31.148188 40.943087 31.159764 40.914062 31.167969 L 27.820312 8.8339844 C 27.865175 8.7893146 27.900645 8.7361897 27.943359 8.6894531 z M 26.085938 9.8300781 L 39.177734 32.164062 C 38.678164 32.661212 38.324556 33.295677 38.142578 34 L 11.857422 34 C 11.675444 33.295677 11.321836 32.661212 10.822266 32.164062 L 23.914062 9.8320312 C 24.261437 9.9302299 24.620841 10 25 10 C 25.379287 10 25.738459 9.9288212 26.085938 9.8300781 z M 12.025391 36 L 37.974609 36 L 27.945312 41.310547 C 27.214286 40.510118 26.171521 40 25 40 C 23.828479 40 22.785714 40.510118 22.054688 41.310547 L 12.025391 36 z" /></svg>
+}
+
+
+const recommendationsData = [
+  {
+    "name": "Satyam Dubey",
+    "subHeading": "Program Manager at Quincus",
+    "text": "Hemant is very passionate and has great vision for his work. His focus keeps everything moving smoothly, he makes sure all the deadlines are met, and makes sure that whatever project he is working on meets the highest standards. His front-end development skill is class and did an exceptional job on recent projects. Creating tools to resolve complex problem in quick time is his art. It’s a pleasure working with him, he is a champ.",
+    "avatar": satyam,
+    "url": "https://www.linkedin.com/in/satyam-dubey-a869302b",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+  {
+    "name": "Muhammad Fareed",
+    "subHeading": "Full Stack Developer",
+    "text": "I had the pleasure of working with Hemant on a project. He is a great person. He is a good example of the saying that 'A software Engineer should not have language or technology barriers.' Hemant always used to explore new technologies like ReactJS, NextJS, and NodeJs. The best part is, He brings his research to completion.  I highly recommend him if you are looking for a Software Developer.",
+    "avatar": fareed,
+    "url": "https://www.linkedin.com/in/awwalfareed/",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+
+  {
+    "name": "Kunal Bhatia",
+    "subHeading": "Software Engineer ReactJS at Quincus",
+    "text": "It is not that I'm exaggerating but it is actually true, Hemant, he is the kind a guy who understands the problem, analyse it, and then from its magically mind gives you a top notch solution which is both durable and adaptable. He is sharp minded and equally soft hearted. Think about it, html, css, react, node, that not it, it is just tip of the iceberg. A man with many skills and lot of energy is ready to rock the corporate world.",
+    "avatar": kunal,
+    "url": "https://www.linkedin.com/in/kunal-r-bhatia/",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+  {
+    "name": "Themring Shaiza",
+    "subHeading": "Full Stack Engineer at Chetu, Inc.",
+    "text": "I’m immensely proud to have work with Hemant for the past one year and what I’ve learned from him is priceless. He’s smart working with detailed knowledge. His approach for a given task is always  the best practices. He follows and check the tasks end to end with good unit test cases. He has a great team spirit keeping in check the teams task and assist the team with the difficulties and does not disappoint. Anyone hiring him shouldn’t hesitate to acquire him.",
+    "avatar": themring,
+    "url": "https://www.linkedin.com/in/themring-shaiza-945106174/",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+
+  {
+    "name": "Anshul Riyal",
+    "subHeading": "Senior Software Engineer",
+    "text": "“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” is the phrase that comes to mind when I think about Hemant. I’ve had the pleasure of knowing Hemant for the past 2 years. He is one of the most dedicated professionals I’ve worked with and is willing to go the extra mile to help you when needed. His expertise as a React.js developer is considerable and it helped our team to come up with more efficient solutions and develop different projects. I rarely come across real talents who stand out like Hemant. Hemant’s ability to handle multiple projects was unlike any I’ve seen before and made a dramatic increase in the productivity level of our company. No matter how tense a meeting, he made sure everyone left with a smile. Hemant would be a true asset for any organization and comes with my heartfelt recommendation.",
+    "avatar": anshul,
+    "url": "https://www.linkedin.com/in/anshul-riyal-i-code",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+  {
+    "name": "Akhil Kumar",
+    "subHeading": "Software Engineer",
+    "text": "I have worked with Hemant.. He has good command on web development and DevOps engineering.... he's also having good managerial qualities and dealt with various different corporate problems.",
+    "avatar": akhil,
+    "url": "https://www.linkedin.com/in/akhilpvghi/",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+
+  {
+    "name": "Karamjeet Singh",
+    "subHeading": "Senior Software Engineer in Java, C#, React JS",
+    "text": "There is no better colleague then Hemant. He is one of the dedicated professionals I`ve worked with and is willing to put that extra effort whenever you need it. His expertise in react js, his contribution to the project and the team is very valuable. I highly recommend him and would love to work with him again.",
+    "avatar": karamjeet,
+    "url": "https://www.linkedin.com/in/karamjeet-singh-2b552743",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+  {
+    "name": "Atul Pant",
+    "subHeading": "Senior Software Engineer",
+    "text": "Hemant is one of the most talented developer I have ever worked with in my 5 years as a developer. Not only is his work amazing and of the highest standard, he always delivers on the brief given and is an absolute pleasure to work with. He is just brilliant!",
+    "avatar": atul,
+    "url": "https://www.linkedin.com/in/atulpant20",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+
+]
+
+function Quote() {
+  return (
+    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 57 57" style={{ width: '30px', height: '30px' }} xmlSpace="preserve">
+      <rect x={0} y={0} style={{ fill: 'transparent' }} width={57} height={57} />
+      <g>
+        <circle style={{ fill: '#BDC3C7' }} cx="18.5" cy="31.5" r="5.5" />
+        <path style={{ fill: '#BDC3C7' }} d="M18.5,38c-3.584,0-6.5-2.916-6.5-6.5s2.916-6.5,6.5-6.5s6.5,2.916,6.5,6.5S22.084,38,18.5,38z
+       M18.5,27c-2.481,0-4.5,2.019-4.5,4.5s2.019,4.5,4.5,4.5s4.5-2.019,4.5-4.5S20.981,27,18.5,27z" />
+      </g>
+      <g>
+        <circle style={{ fill: '#BDC3C7' }} cx="35.5" cy="31.5" r="5.5" />
+        <path style={{ fill: '#BDC3C7' }} d="M35.5,38c-3.584,0-6.5-2.916-6.5-6.5s2.916-6.5,6.5-6.5s6.5,2.916,6.5,6.5S39.084,38,35.5,38z
+       M35.5,27c-2.481,0-4.5,2.019-4.5,4.5s2.019,4.5,4.5,4.5s4.5-2.019,4.5-4.5S37.981,27,35.5,27z" />
+      </g>
+      <path style={{ fill: '#BDC3C7' }} d="M13,32c-0.553,0-1-0.447-1-1c0-7.72,6.28-14,14-14c0.553,0,1,0.447,1,1s-0.447,1-1,1
+    c-6.617,0-12,5.383-12,12C14,31.553,13.553,32,13,32z" />
+      <path style={{ fill: '#BDC3C7' }} d="M30,32c-0.553,0-1-0.447-1-1c0-7.72,6.28-14,14-14c0.553,0,1,0.447,1,1s-0.447,1-1,1
+    c-6.617,0-12,5.383-12,12C31,31.553,30.553,32,30,32z" />
+    </svg>
+  )
+}
 function Badge(props) {
   return (
     <a
@@ -42,7 +162,7 @@ function ArrowIcon() {
   );
 }
 
-function ChannelLink({ img, link, name, subscribers }) {
+function ChannelLink({ img, link, name, icon }) {
   return (
     <a
       href={link}
@@ -60,31 +180,13 @@ function ChannelLink({ img, link, name, subscribers }) {
             className="border border-neutral-200 dark:border-neutral-700 rounded-full h-16 w-16"
           />
           <div className="border border-neutral-200 dark:border-neutral-700 rounded-full bg-white inline-flex p-1 relative h-6 w-6 items-center -top-6 -right-10">
-            <svg
-              width="15"
-              height="11"
-              viewBox="0 0 15 11"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4.23047 7.01409V7.01437C4.23422 7.15313 4.23547 7.29269 4.25879 7.43058C4.28362 7.57647 4.3191 7.71873 4.38678 7.85115C4.47829 8.03036 4.60358 8.18176 4.76263 8.30534C4.87653 8.3941 5.00097 8.46458 5.13871 8.50903C5.33954 8.57377 5.54674 8.59857 5.75698 8.59979C5.88814 8.60062 6.01923 8.60389 6.15045 8.60334C7.10333 8.59934 8.05624 8.61022 9.00917 8.59747C9.13561 8.59577 9.25999 8.58034 9.3841 8.55766C9.62196 8.51416 9.83217 8.41265 10.012 8.25241C10.2216 8.06562 10.3631 7.83697 10.4269 7.56105C10.4687 7.38068 10.4791 7.19771 10.4809 7.01407V6.97744C10.4809 6.96324 10.4755 3.85737 10.475 3.81632C10.4736 3.70356 10.4653 3.59162 10.4441 3.48066C10.4184 3.34545 10.382 3.21369 10.3173 3.09137C10.2488 2.96211 10.1631 2.84593 10.057 2.74437C9.89467 2.58878 9.70728 2.47877 9.48904 2.42056C9.29202 2.36806 9.09102 2.35635 8.88851 2.35655C8.88786 2.35564 8.88747 2.35457 8.88739 2.35345H5.82286C5.82286 2.3545 5.82286 2.35553 5.82269 2.35655C5.70776 2.35866 5.59268 2.35778 5.47836 2.37196C5.35313 2.38751 5.22907 2.41094 5.11054 2.45469C4.92382 2.5237 4.76158 2.63118 4.62301 2.77472C4.466 2.93723 4.35528 3.1253 4.29663 3.34425C4.24421 3.53959 4.2328 3.73881 4.23252 3.93945"
-                fill="white"
-              />
-              <path
-                d="M7.75735 9.75221L5.18249 9.7052C4.34881 9.68881 3.51306 9.72152 2.69572 9.55178C1.45237 9.29819 1.36428 8.05475 1.27211 7.01174C1.14511 5.5454 1.19428 4.05245 1.43394 2.59835C1.56925 1.78245 2.10171 1.29559 2.92514 1.24262C5.70483 1.05035 8.50301 1.07313 11.2765 1.16283C11.5695 1.17106 11.8644 1.216 12.1532 1.26716C13.579 1.51668 13.6137 2.92577 13.7062 4.11196C13.7983 5.31039 13.7594 6.51497 13.5833 7.70524C13.4419 8.69075 13.1715 9.5172 12.0303 9.59698C10.6005 9.7013 9.20347 9.78529 7.76961 9.75855C7.76967 9.75221 7.76144 9.75221 7.75735 9.75221ZM6.24358 7.25718C7.32108 6.63951 8.37802 6.03213 9.44936 5.4186C8.36985 4.80093 7.31492 4.19356 6.24358 3.58003V7.25718Z"
-                fill="#FF0000"
-              />
-            </svg>
+            {icon}
           </div>
         </div>
         <div className="flex flex-col">
           <p className="font-bold text-neutral-900 dark:text-neutral-100">
             {name}
           </p>
-          <p className="text-neutral-600 dark:text-neutral-400">
-            {subscribers} subscribers
-          </p>
         </div>
       </div>
       <div className="text-neutral-700 dark:text-neutral-300">
@@ -94,19 +196,16 @@ function ChannelLink({ img, link, name, subscribers }) {
   );
 }
 
-async function BlogLink({ slug, name }) {
-  const allViews = await getViewsCount();
-
+async function BlogLink({ url, name }) {
   return (
     <a
-      href={`/blog/${slug}`}
+      href={url}
       className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50  dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4 w-full"
     >
       <div className="flex flex-col">
         <p className="font-bold text-neutral-900 dark:text-neutral-100">
           {name}
         </p>
-        <ViewCounter allViews={allViews} slug={slug} trackView={false} />
       </div>
       <div className="text-neutral-700 dark:text-neutral-300">
         <ArrowIcon />
@@ -115,86 +214,168 @@ async function BlogLink({ slug, name }) {
   );
 }
 
+function Recommendations() {
+  const chunkSize = 4
+  return (
+    <div className={`grid grid-col-1 md:grid-cols-2 gap-4 my-8`}>
+      {Array.from({ length: Math.ceil(recommendationsData.length / chunkSize) }, (_, index) => recommendationsData.slice(index * chunkSize, index * chunkSize + chunkSize)).map((recommendationGrid) => (
+        <div className="grid gap-4">
+          {recommendationGrid.map((recommendation, index) => (
+            <div key={index} className="max-w-md rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 h-fit">
+              <div className="rounded-[calc(1.5rem-1px)] p-10 bg-neutral-50 dark:bg-gray-900">
+                <Image
+                  alt={"LinkedIn"}
+                  src={recommendation.socialImage}
+                  height={64}
+                  width={100}
+                  sizes="33vw"
+                />
+                <Quote />
+                <p className="text-gray-700 dark:text-gray-300">{recommendation.text}</p>
+                <div className="mt-8 flex gap-4 items-center">
+                  <Image
+                    alt={recommendation.name}
+                    src={recommendation.avatar}
+                    height={12}
+                    width={12}
+                    sizes="33vw"
+                    className="border border-neutral-200 dark:border-neutral-700 rounded-full h-16 w-16"
+                  />
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-700 dark:text-white">{recommendation.name}</h3>
+                    <span className="text-sm tracking-wide text-gray-600 dark:text-gray-400">{recommendation.subHeading}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      ))}
+    </div>
+  )
+}
+
 export default async function Page() {
-  const [leerobSubscribers, vercelSubscribers] = await Promise.all([
-    getLeeYouTubeSubs(),
-    getVercelYouTubeSubs(),
-  ]);
+  // const [leerobSubscribers, vercelSubscribers] = await Promise.all([
+  //   getLeeYouTubeSubs(),
+  //   getVercelYouTubeSubs(),
+  // ]);
 
   return (
     <section>
       <h1 className="font-bold text-2xl mb-8 tracking-tighter">
-        hey, I'm leerob 👋
+        hey, I'm Hemant 👋
       </h1>
       <p className="prose prose-neutral dark:prose-invert">
-        {`I'm a frontend developer, optimist, and community builder. I currently
-        work as the VP of Developer Experience at `}
+        {` I'm a developer who loves exploring new things. I currently
+        work as Senior Software Engineer at `}
         <span className="not-prose">
-          <Badge href="https://vercel.com">
-            <svg
-              width="13"
-              height="11"
-              viewBox="0 0 13 11"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="inline-flex mr-1"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M6.5 0L13 11H0L6.5 0Z"
-                fill="currentColor"
-              />
-            </svg>
-            Vercel
+          <Badge href="https://paytm.com">
+            Paytm
           </Badge>
         </span>
-        {`, where I lead the
-        community for `}
-        <Badge href="https://nextjs.org">
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="inline-flex mr-1"
-          >
-            <path
-              d="M5.13979 0.00296175C5.11613 0.00511197 5.04086 0.0126378 4.97312 0.0180134C3.41075 0.158853 1.94731 1.00174 1.02043 2.29725C0.504301 3.01757 0.174194 3.83466 0.0494624 4.70012C0.00537635 5.00223 0 5.09146 0 5.50108C0 5.91069 0.00537635 5.99993 0.0494624 6.30204C0.348387 8.36732 1.81828 10.1026 3.81183 10.7455C4.16882 10.8605 4.54516 10.939 4.97312 10.9863C5.13978 11.0046 5.86022 11.0046 6.02688 10.9863C6.76559 10.9046 7.3914 10.7218 8.0086 10.4068C8.10323 10.3584 8.12151 10.3455 8.1086 10.3348C8.1 10.3283 7.69677 9.78754 7.2129 9.13388L6.33333 7.94588L5.23118 6.31494C4.62473 5.41829 4.12581 4.68507 4.12151 4.68507C4.1172 4.68399 4.1129 5.40862 4.11075 6.29343C4.10753 7.84267 4.10645 7.90503 4.0871 7.94158C4.05914 7.99426 4.03763 8.01576 3.99247 8.03941C3.95806 8.05662 3.92796 8.05984 3.76559 8.05984H3.57957L3.53011 8.02866C3.49785 8.00824 3.47419 7.98136 3.45806 7.95018L3.43548 7.9018L3.43763 5.7462L3.44086 3.58953L3.47419 3.5476C3.4914 3.52502 3.52796 3.496 3.55376 3.48202C3.59785 3.46052 3.61505 3.45837 3.80108 3.45837C4.02043 3.45837 4.05699 3.46697 4.11398 3.52932C4.13011 3.54653 4.72688 4.44532 5.44086 5.52796C6.15484 6.61059 7.13118 8.08887 7.61075 8.81457L8.48172 10.1337L8.52581 10.1047C8.91613 9.85098 9.32903 9.48974 9.65591 9.11345C10.3516 8.31464 10.8 7.34059 10.9505 6.30204C10.9946 5.99993 11 5.91069 11 5.50108C11 5.09146 10.9946 5.00223 10.9505 4.70012C10.6516 2.63483 9.18172 0.899604 7.18817 0.256688C6.83656 0.142726 6.46237 0.0642427 6.04301 0.0169378C5.93978 0.00618668 5.22903 -0.00563913 5.13979 0.00296175ZM7.3914 3.32935C7.44301 3.35516 7.48495 3.40461 7.5 3.45622C7.5086 3.48417 7.51075 4.08193 7.5086 5.42905L7.50538 7.36209L7.16452 6.83959L6.82258 6.31709V4.91192C6.82258 4.00345 6.82688 3.49277 6.83333 3.46804C6.85054 3.40784 6.88817 3.36053 6.93979 3.33258C6.98387 3.31 7 3.30785 7.16882 3.30785C7.32796 3.30785 7.35591 3.31 7.3914 3.32935Z"
-              fill="currentColor"
-            />
-          </svg>
-          Next.js
+        {`, where I work on the
+          frontend development for the `}
+        <Badge href="https://www.paytmbank.com/cards">
+          NCMC
         </Badge>
-        {`, an open-source web framework built with `}
-        <Badge href="https://react.dev">
-          <svg
-            width="14"
-            height="12"
-            viewBox="0 0 14 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="inline-flex mr-1"
-          >
-            <path
-              d="M12.3029 5.50126C12.3029 4.68299 11.2822 3.90753 9.71741 3.42664C10.0785 1.82536 9.91803 0.551385 9.21085 0.143511C9.04785 0.047837 8.85726 0.0025177 8.64912 0.0025177V0.563973C8.76447 0.563973 8.85726 0.586633 8.935 0.629435C9.27605 0.825818 9.42401 1.57359 9.30865 2.53536C9.28107 2.77203 9.23593 3.02129 9.18076 3.27558C8.68924 3.15473 8.15259 3.06157 7.58836 3.00114C7.24981 2.53536 6.89873 2.11238 6.54515 1.74227C7.36266 0.9794 8.13002 0.561456 8.65163 0.561456V0C7.96201 0 7.05923 0.493477 6.14642 1.34951C5.23361 0.498512 4.33083 0.010071 3.64121 0.010071V0.571527C4.16031 0.571527 4.93017 0.986953 5.74769 1.74479C5.39661 2.1149 5.04553 2.53536 4.712 3.00114C4.14526 3.06157 3.60861 3.15473 3.11709 3.2781C3.05942 3.02632 3.01679 2.7821 2.98669 2.54795C2.86883 1.58618 3.01428 0.838407 3.35282 0.639506C3.42805 0.594186 3.52585 0.574044 3.64121 0.574044V0.0125887C3.43056 0.0125887 3.23997 0.0579079 3.07446 0.153582C2.36979 0.561456 2.21181 1.83291 2.57543 3.42916C1.01563 3.91257 0 4.68551 0 5.50126C0 6.31952 1.02064 7.09499 2.58546 7.57587C2.22435 9.17716 2.38484 10.4511 3.09202 10.859C3.25502 10.9547 3.44561 11 3.65625 11C4.34588 11 5.24865 10.5065 6.16146 9.65049C7.07427 10.5015 7.97705 10.9899 8.66667 10.9899C8.87732 10.9899 9.06791 10.9446 9.23342 10.8489C9.93809 10.4411 10.0961 9.1696 9.73245 7.57336C11.2872 7.09247 12.3029 6.31701 12.3029 5.50126ZM9.03782 3.82193C8.94503 4.14672 8.82968 4.48157 8.69927 4.81643C8.59646 4.61501 8.48863 4.4136 8.37076 4.21218C8.25541 4.01076 8.13253 3.81437 8.00965 3.62303C8.36575 3.6759 8.70931 3.74136 9.03782 3.82193ZM7.88928 6.50332C7.69368 6.84321 7.49306 7.16548 7.28492 7.46509C6.91127 7.49782 6.53261 7.51545 6.15143 7.51545C5.77277 7.51545 5.3941 7.49783 5.02296 7.46761C4.81482 7.168 4.61169 6.84825 4.41609 6.51087C4.22551 6.18105 4.05247 5.84619 3.89449 5.50881C4.04997 5.17143 4.22551 4.83406 4.41358 4.50423C4.60919 4.16434 4.8098 3.84207 5.01794 3.54246C5.39159 3.50973 5.77026 3.4921 6.15143 3.4921C6.5301 3.4921 6.90876 3.50973 7.27991 3.53994C7.48805 3.83955 7.69117 4.1593 7.88677 4.49668C8.07736 4.8265 8.25039 5.16136 8.40838 5.49874C8.25039 5.83612 8.07736 6.17349 7.88928 6.50332ZM8.69927 6.17601C8.83469 6.51339 8.95005 6.85077 9.04534 7.17807C8.71683 7.25864 8.37076 7.32662 8.01216 7.37949C8.13504 7.18563 8.25792 6.98672 8.37327 6.78279C8.48863 6.58137 8.59646 6.37743 8.69927 6.17601ZM6.15645 8.86244C5.92323 8.62074 5.69001 8.35134 5.4593 8.05676C5.685 8.06683 5.91571 8.07439 6.14893 8.07439C6.38465 8.07439 6.61787 8.06935 6.84607 8.05676C6.62038 8.35134 6.38716 8.62074 6.15645 8.86244ZM4.29071 7.37949C3.93461 7.32662 3.59105 7.26116 3.26254 7.18059C3.35533 6.8558 3.47068 6.52094 3.60108 6.18608C3.7039 6.3875 3.81173 6.58892 3.92959 6.79034C4.04746 6.99176 4.16783 7.18814 4.29071 7.37949ZM6.14391 2.14008C6.37713 2.38178 6.61035 2.65118 6.84106 2.94575C6.61536 2.93568 6.38465 2.92813 6.15143 2.92813C5.91571 2.92813 5.68249 2.93317 5.45429 2.94575C5.67998 2.65118 5.9132 2.38178 6.14391 2.14008ZM4.2882 3.62303C4.16532 3.81689 4.04244 4.01579 3.92709 4.21973C3.81173 4.42115 3.7039 4.62257 3.60108 4.82399C3.46567 4.48661 3.35031 4.14923 3.25502 3.82193C3.58353 3.74388 3.9296 3.6759 4.2882 3.62303ZM2.01871 6.77523C1.13098 6.39506 0.556713 5.89654 0.556713 5.50126C0.556713 5.10597 1.13098 4.60494 2.01871 4.22728C2.23438 4.13413 2.4701 4.05104 2.71335 3.97299C2.85629 4.46647 3.04437 4.98009 3.27759 5.50629C3.04688 6.02998 2.86131 6.54108 2.72088 7.03204C2.47261 6.95399 2.23689 6.86839 2.01871 6.77523ZM3.36787 10.3731C3.02682 10.1767 2.87886 9.42893 2.99422 8.46715C3.0218 8.23049 3.06694 7.98123 3.12211 7.72694C3.61362 7.84779 4.15027 7.94095 4.71451 8.00137C5.05305 8.46715 5.40413 8.89013 5.75772 9.26024C4.94021 10.0231 4.17284 10.4411 3.65124 10.4411C3.53839 10.4385 3.4431 10.4159 3.36787 10.3731ZM9.31617 8.45457C9.43404 9.41634 9.28859 10.1641 8.95005 10.363C8.87481 10.4083 8.77701 10.4285 8.66166 10.4285C8.14256 10.4285 7.37269 10.013 6.55518 9.25521C6.90626 8.8851 7.25734 8.46464 7.59086 7.99886C8.15761 7.93843 8.69426 7.84527 9.18577 7.7219C9.24345 7.9762 9.28859 8.22042 9.31617 8.45457ZM10.2816 6.77523C10.066 6.86839 9.83026 6.95148 9.58701 7.02953C9.44407 6.53605 9.25599 6.02243 9.02277 5.49622C9.25348 4.97253 9.43905 4.46143 9.57948 3.97047C9.82775 4.04852 10.0635 4.13413 10.2842 4.22728C11.1719 4.60746 11.7462 5.10597 11.7462 5.50126C11.7436 5.89654 11.1694 6.39757 10.2816 6.77523Z"
-              fill="#61DAFB"
-            />
-            <path
-              d="M6.13697 6.65389C6.77191 6.65389 7.28663 6.13725 7.28663 5.49994C7.28663 4.86263 6.77191 4.34599 6.13697 4.34599C5.50203 4.34599 4.9873 4.86263 4.9873 5.49994C4.9873 6.13725 5.50203 6.65389 6.13697 6.65389Z"
-              fill="#61DAFB"
-            />
-          </svg>
-          React
+        {` and `}
+        <Badge href="https://paytm.com/blog/paytm-help/how-to-use-paytm-for-local-citybus-ticket-booking/">
+          City Bus
         </Badge>
-        .
+        {` projects. When it comes
+          to web development, I'm always exploring new ideas and technologies to
+          stay up-to-date with the latest trends.`}
       </p>
+      <Recommendations />
+      <div className="prose prose-neutral dark:prose-invert">
+        <p>
+          I have a deep-rooted love affair with the web and creating
+          cutting-edge tools and web apps, a lot of which are open source. I'm
+          always on the lookout for new ways to wow my users with magical
+          features that will make them say, 'Woah, how did they do that?'. My
+          obsession for learning and delivering top-notch solutions is the only
+          thing that exceeds my love for pizza.
+        </p>
+      </div>
+      <div className="my-8 grid gap-8 md:grid-cols-2 grid-cols-1">
+        <ChannelLink
+          img={hemant}
+          name="@nhemnt"
+          link="https://www.instagram.com/nhemnt"
+          icon={ICONS.instagram}
+        />
+        <ChannelLink
+          img={hemantLinkdin}
+          name="@nhemnt"
+          link="https://www.linkedin.com/in/nhemnt/"
+          icon={ICONS.linkdin}
+        />
+
+        <ChannelLink
+          img={hemantLeetocde}
+          name="@nhemnt"
+          link="https://leetcode.com/nhemnt/"
+          icon={ICONS.leetcode}
+        />
+
+        <ChannelLink
+          img={hemantGithub}
+          name="@nhemnt"
+          link="https://github.com/nhemnt"
+          icon={ICONS.github}
+        />
+
+        <ChannelLink
+          img={hemantTwitter}
+          name="@nhemnt"
+          link="https://twitter.com/nhemnt"
+          icon={ICONS.twitter}
+        />
+
+        <ChannelLink
+          img={hemantBehance}
+          name="@nhemnt"
+          link="https://www.behance.net/nhemnt"
+          icon={ICONS.behance}
+        />
+
+      </div>
+      <div className="prose prose-neutral dark:prose-invert">
+        <p>
+          Over the past several years, I've embarked on a journey of creating numerous open-source projects. My approach is to strike a balance between simplicity and magic, making each project truly special.
+        </p>
+      </div>
+      <div className="my-8 flex flex-col space-y-4 w-full">
+        <BlogLink
+          name="Simple avatar generator React component"
+          url="https://bitmoji.netlify.app/"
+        />
+        <BlogLink
+          name="Slack bot that pushes daily notifications to a slack channel"
+          url="https://slackify-flax.vercel.app/docs"
+        />
+        <BlogLink name="Practice Linkedin quizzes" url="https://linkthein.vercel.app/" />
+      </div>
+
+
+      <p className="prose prose-neutral dark:prose-invert">
+        When I'm not busy typing away at my keyboard, you might catch me serving
+        up some serious shots on the ping pong table, breaking the pool balls with
+        precision, spiking volleyballs, or smashing shuttlecocks (in a friendly
+        way, of course!). I'm also a gym enthusiast, swimmer, skater, and
+        occasional runner. And when I'm not working on my athleticism, I like to
+        binge-watch anime and explore new places, because let's face it, nothing
+        beats a good adventure!
+      </p>
+
+
       <div className="columns-2 sm:columns-3 gap-4 my-8">
         <div className="relative h-40 mb-4">
           <Image
             alt="Me speaking on stage at React Summit about the future of Next.js"
-            src={summit}
+            src={skipping}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -204,7 +385,7 @@ export default async function Page() {
         <div className="relative h-80 mb-4 sm:mb-0">
           <Image
             alt="Me, Lydia, and Delba filming the Next.js Conf keynote"
-            src={filming}
+            src={handstand}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -214,7 +395,7 @@ export default async function Page() {
         <div className="relative h-40 sm:h-80 sm:mb-4">
           <Image
             alt="Me standing on stage at Reactathon delivering the keynote"
-            src={reactathon}
+            src={humanFlag}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -224,7 +405,7 @@ export default async function Page() {
         <div className="relative h-40 mb-4 sm:mb-0">
           <Image
             alt="Me standing on stage at SmashingConf giving a talk about my optimism for the web"
-            src={smashing}
+            src={running}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -234,7 +415,7 @@ export default async function Page() {
         <div className="relative h-40 mb-4">
           <Image
             alt="Me and Guillermo Rauch on stage for Vercel Ship, answering questions from the Next.js community"
-            src={ship}
+            src={swimming}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -244,7 +425,7 @@ export default async function Page() {
         <div className="relative h-80">
           <Image
             alt="My badge on top of a pile of badges from a Vercel meetup we held"
-            src={meetups}
+            src={back}
             fill
             sizes="(min-width: 768px) 213px, 33vw"
             priority
@@ -252,238 +433,34 @@ export default async function Page() {
           />
         </div>
       </div>
+{/* 
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I create educational content for developers, teaching them about web
-          development, JavaScript and TypeScript, React and Next.js, and more.
-          This comes in all forms: blog posts, videos, tweets, conference talks,
-          and workshops. You can watch some of my favorites below.
-        </p>
-      </div>
-      <div className="my-8 flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 w-full">
-        <ChannelLink
-          img={avatar}
-          name="@leerob"
-          subscribers={leerobSubscribers.toLocaleString()}
-          link="https://www.youtube.com/@leerob"
-        />
-        <ChannelLink
-          img={vercel}
-          name="@vercel"
-          subscribers={vercelSubscribers.toLocaleString()}
-          link="https://www.youtube.com/@vercelhq"
-        />
-      </div>
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          Over the past decade, I've written content on my blog and newsletter.
-          I try to keep things simple. You'll find writing about technologies
-          I'm interested in at the time, or how I'm learning and growing in my
-          careers, sharing knowledge along the way.
-        </p>
-      </div>
-      <div className="my-8 flex flex-col space-y-4 w-full">
-        <Suspense>
-          <BlogLink
-            name="What Makes A Great Developer Experience?"
-            slug="developer-experience-examples"
-          />
-          <BlogLink
-            name="2023 State of Databases for Serverless & Edge"
-            slug="backend"
-          />
-          <BlogLink name="The Story of Heroku" slug="heroku" />
-        </Suspense>
-      </div>
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          I invest small angel checks into early stage startups building tools
-          for developers.
+          Technologies I like to work on or get my hands dirty with:
         </p>
       </div>
       <div className="my-8 flex flex-row space-x-2 w-full h-14 overflow-x-auto">
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
-          <svg
-            width="78"
-            height="20"
-            viewBox="0 0 78 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-neutral-900 dark:text-neutral-100"
-          >
-            <g clipPath="url(#clip0_52_620)">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M2.52117 3.27426C2.41815 3.39038 2.42497 3.56854 2.5332 3.67956L15.9091 17.3985C16.0174 17.5095 16.1911 17.5165 16.3043 17.4108C18.2656 15.5804 19.4967 12.9413 19.4967 10.0072C19.4967 4.4804 15.1283 0 9.73966 0C6.87899 0 4.30584 1.26267 2.52117 3.27426ZM0.84938 5.87788C0.799951 5.98966 0.824874 6.12072 0.909487 6.2075L13.4444 19.0638C13.529 19.1506 13.6568 19.1762 13.7658 19.1255C14.0554 18.9908 14.3374 18.842 14.611 18.6799C14.7736 18.5836 14.7985 18.356 14.6657 18.2198L1.73236 4.95484C1.59957 4.81864 1.37767 4.8442 1.28378 5.011C1.1258 5.29164 0.980724 5.58088 0.84938 5.87788ZM0.0889264 9.5592C0.0302355 9.499 -0.000992005 9.41604 0.00453323 9.3311C0.0304102 8.93328 0.078953 8.54184 0.148849 8.1581C0.190759 7.928 0.464891 7.84816 0.626269 8.01366L11.6834 19.3543C11.8448 19.5198 11.7669 19.801 11.5426 19.844C11.1684 19.9157 10.7868 19.9654 10.3989 19.992C10.3161 19.9976 10.2352 19.9656 10.1765 19.9054L0.0889264 9.5592ZM0.767474 12.3518C0.566019 12.1452 0.240919 12.3232 0.314698 12.6054C1.21358 16.0441 3.85376 18.7519 7.20641 19.6739C7.4816 19.7495 7.65518 19.4161 7.45373 19.2095L0.767474 12.3518ZM39.3129 5.507C40.0123 5.507 40.5792 4.9234 40.5792 4.2035C40.5792 3.4836 40.0123 2.9 39.3129 2.9C38.6136 2.9 38.0467 3.4836 38.0467 4.2035C38.0467 4.9234 38.6136 5.507 39.3129 5.507ZM28.4668 16.8749V2.90078H30.7171V14.8304H36.7845V16.8749H28.4668ZM44.4833 11.1727V16.8749H42.3059V6.9711H44.456V8.66862L44.4833 8.64988C44.7019 8.11842 45.0543 7.6745 45.5402 7.3181C46.0259 6.95546 46.6455 6.77414 47.3987 6.77414C48.0668 6.77414 48.674 6.92734 49.2208 7.2337C49.7674 7.53382 50.2046 7.9746 50.5326 8.55608C50.8606 9.13756 51.0246 9.85034 51.0246 10.6944V16.8749H48.8472V11.0039C48.8472 10.2536 48.6528 9.68464 48.2641 9.297C47.8816 8.9031 47.3683 8.70614 46.7244 8.70614C46.3114 8.70614 45.9349 8.79368 45.5948 8.96874C45.2547 9.14382 44.9844 9.41266 44.784 9.7753C44.5835 10.1379 44.4833 10.6037 44.4833 11.1727ZM64.1988 16.7061C64.6968 16.9249 65.2678 17.0344 65.9115 17.0344C66.4399 17.0344 66.8923 16.9656 67.2689 16.828C67.6456 16.6842 67.9553 16.4935 68.1982 16.2559C68.4472 16.0183 68.6446 15.7589 68.7904 15.4775H68.8269V16.8749H70.9132V10.0567C70.9132 9.57522 70.8219 9.13444 70.6398 8.73428C70.4577 8.33412 70.1935 7.98712 69.8471 7.69326C69.5071 7.39938 69.0941 7.1743 68.6081 7.018C68.1224 6.85542 67.5756 6.77414 66.9684 6.77414C66.1363 6.77414 65.4165 6.92108 64.8091 7.21494C64.2077 7.50256 63.7372 7.8902 63.3969 8.3779C63.0568 8.86558 62.8716 9.4158 62.8412 10.0285H64.9458C64.97 9.74092 65.0673 9.48456 65.2373 9.25948C65.4074 9.0344 65.6383 8.85932 65.9298 8.73428C66.2213 8.60298 66.5583 8.53732 66.9411 8.53732C67.3236 8.53732 67.6485 8.60298 67.9159 8.73428C68.1891 8.86558 68.3987 9.04378 68.5443 9.26886C68.6902 9.49394 68.7631 9.75654 68.7631 10.0567V10.1317C68.7631 10.3568 68.6871 10.5225 68.5354 10.6288C68.3895 10.735 68.1405 10.8132 67.7883 10.8632C67.442 10.9132 66.9684 10.9726 66.367 11.0414C65.875 11.0977 65.4013 11.1821 64.9458 11.2946C64.4903 11.4072 64.0833 11.5729 63.7249 11.7917C63.3727 12.0105 63.0933 12.3013 62.8868 12.6639C62.6803 13.0266 62.5772 13.4924 62.5772 14.0613C62.5772 14.7178 62.7228 15.268 63.0143 15.712C63.3059 16.1496 63.7007 16.481 64.1988 16.7061ZM67.7246 15.0461C67.3722 15.2399 66.9379 15.3368 66.4218 15.3368C65.8994 15.3368 65.4832 15.2243 65.1736 14.9992C64.8637 14.7679 64.7089 14.4521 64.7089 14.052C64.7089 13.7393 64.7939 13.4861 64.964 13.2923C65.1402 13.0985 65.3709 12.9453 65.6564 12.8327C65.9419 12.7202 66.2515 12.642 66.5856 12.5983C66.8285 12.5608 67.0655 12.5232 67.2963 12.4857C67.527 12.442 67.7427 12.4013 67.9432 12.3638C68.1436 12.32 68.3137 12.2763 68.4533 12.2325C68.5991 12.1887 68.7054 12.1418 68.7721 12.0918V13.1985C68.7721 13.5861 68.6842 13.9425 68.5079 14.2677C68.3378 14.5865 68.0767 14.846 67.7246 15.0461ZM72.8129 16.8749V6.9711H74.9082V8.60298H74.9357C75.1117 8.04026 75.3881 7.61198 75.7646 7.3181C76.1472 7.018 76.6484 6.86794 77.2679 6.86794C77.4198 6.86794 77.5565 6.87418 77.6778 6.8867C77.8055 6.89294 77.9118 6.8992 77.9968 6.90544V8.92184C77.9178 8.90934 77.778 8.89372 77.5777 8.87496C77.3773 8.8562 77.1647 8.84682 76.9399 8.84682C76.5815 8.84682 76.2537 8.93122 75.9559 9.10004C75.6583 9.26886 75.4214 9.52834 75.2453 9.87846C75.0753 10.2224 74.9903 10.6569 74.9903 11.1821V16.8749H72.8129ZM38.2197 16.8749V6.9711H40.3971V16.8749H38.2197ZM54.6461 16.4341C55.3446 16.878 56.1737 17.1 57.1333 17.1C57.8743 17.1 58.5485 16.9624 59.1559 16.6873C59.7693 16.406 60.2795 16.0215 60.6864 15.5338C61.0934 15.0398 61.3576 14.4709 61.4791 13.8269H59.4293C59.338 14.1207 59.1892 14.3802 58.9827 14.6053C58.7824 14.8241 58.5303 14.9961 58.2267 15.1211C57.9229 15.2462 57.5707 15.3087 57.1698 15.3087C56.6293 15.3087 56.1646 15.1836 55.7759 14.9335C55.3934 14.6834 55.1018 14.3364 54.9014 13.8925C54.7194 13.4839 54.62 13.0212 54.6032 12.5045H61.6066V11.9042C61.6066 11.1415 61.4972 10.4474 61.2786 9.8222C61.0601 9.1907 60.7502 8.64674 60.3493 8.19032C59.9485 7.72764 59.4657 7.37126 58.9008 7.12116C58.3419 6.87106 57.7195 6.74602 57.0331 6.74602C56.1404 6.74602 55.3508 6.96798 54.6644 7.4119C53.978 7.85582 53.4406 8.46856 53.0518 9.2501C52.6632 10.0317 52.4687 10.9257 52.4687 11.9324C52.4687 12.9328 52.6571 13.8237 53.0337 14.6053C53.4102 15.3806 53.9478 15.9902 54.6461 16.4341ZM59.2288 9.87846C59.0283 9.4533 58.7429 9.12506 58.3724 8.89372C58.0019 8.66238 57.5647 8.5467 57.0604 8.5467C56.5624 8.5467 56.1281 8.66238 55.7576 8.89372C55.3933 9.12506 55.1079 9.4533 54.9014 9.87846C54.7539 10.1864 54.6607 10.5365 54.6217 10.9289H59.5082C59.4692 10.5365 59.376 10.1864 59.2288 9.87846Z"
-                fill="currentColor"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_52_620">
-                <rect width="78" height="20" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
-          <svg
-            width="100"
-            height="19"
-            viewBox="0 0 100 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-[#1F1F1F] dark:text-neutral-100"
-          >
-            <g clipPath="url(#clip0_52_607)">
-              <path
-                d="M26.0576 11.2253C26.1607 12.1671 27.0377 13.7816 29.5826 13.7816C31.8006 13.7816 32.8669 12.4025 32.8669 11.0571C32.8669 9.84622 32.0242 8.85397 30.3564 8.51758L29.1526 8.26534C28.6884 8.18125 28.379 7.92899 28.379 7.52535C28.379 7.05443 28.8604 6.70129 29.4623 6.70129C30.4251 6.70129 30.7862 7.32353 30.855 7.81127L32.7636 7.39082C32.6605 6.49946 31.8523 5.00269 29.4451 5.00269C27.6223 5.00269 26.2812 6.23039 26.2812 7.71034C26.2812 8.87077 27.0204 9.82942 28.654 10.1826L29.7717 10.4349C30.4251 10.5694 30.6831 10.8721 30.6831 11.2421C30.6831 11.6794 30.322 12.0662 29.5654 12.0662C28.5681 12.0662 28.0693 11.4607 28.0179 10.8048L26.0576 11.2253Z"
-                fill="currentColor"
-              />
-              <path
-                d="M40.1756 13.5293H42.3594C42.325 13.2434 42.2734 12.6716 42.2734 12.0325V5.25488H39.9863V10.0648C39.9863 11.0234 39.4018 11.6961 38.3873 11.6961C37.3212 11.6961 36.8397 10.9561 36.8397 10.0312V5.25488H34.5527V10.4853C34.5527 12.2848 35.7219 13.7479 37.7682 13.7479C38.6622 13.7479 39.6428 13.4116 40.107 12.6379C40.107 12.9743 40.1412 13.3611 40.1756 13.5293Z"
-                fill="currentColor"
-              />
-              <path
-                d="M47.0006 16.7247V12.7221C47.4132 13.2771 48.2731 13.7312 49.4424 13.7312C51.8325 13.7312 53.4314 11.8812 53.4314 9.37531C53.4314 6.91992 52.0044 5.06995 49.5283 5.06995C48.256 5.06995 47.3103 5.62491 46.9319 6.26402V5.25494H44.7139V16.7247H47.0006ZM51.1789 9.39214C51.1789 10.8721 50.2505 11.7298 49.0812 11.7298C47.9121 11.7298 46.9664 10.8553 46.9664 9.39214C46.9664 7.92899 47.9121 7.07127 49.0812 7.07127C50.2505 7.07127 51.1789 7.92899 51.1789 9.39214Z"
-                fill="currentColor"
-              />
-              <path
-                d="M54.7266 11.2757C54.7266 12.5707 55.8269 13.7648 57.6326 13.7648C58.8875 13.7648 59.6958 13.193 60.1255 12.5371C60.1255 12.8566 60.16 13.3107 60.2116 13.5293H62.3094C62.2577 13.2434 62.2064 12.6548 62.2064 12.2176V8.14761C62.2064 6.48263 61.209 5.00269 58.5267 5.00269C56.2569 5.00269 55.0359 6.43217 54.8985 7.72717L56.9274 8.14761C56.9963 7.42445 57.5465 6.80219 58.5436 6.80219C59.5068 6.80219 59.971 7.2899 59.971 7.87853C59.971 8.16444 59.8164 8.3999 59.3348 8.46716L57.2543 8.76988C55.8443 8.9717 54.7266 9.79576 54.7266 11.2757ZM58.1138 12.0998C57.3746 12.0998 57.0133 11.6289 57.0133 11.1412C57.0133 10.5021 57.4775 10.1826 58.0624 10.0985L59.971 9.81259V10.1826C59.971 11.6458 59.0768 12.0998 58.1138 12.0998Z"
-                fill="currentColor"
-              />
-              <path
-                d="M66.73 13.5293V12.5202C67.1768 13.2266 68.0709 13.7312 69.2403 13.7312C71.6479 13.7312 73.2298 11.8643 73.2298 9.35848C73.2298 6.90306 71.8024 5.03628 69.3263 5.03628C68.0709 5.03628 67.1425 5.57445 66.7642 6.16305V1.35315H64.5117V13.5293H66.73ZM70.9425 9.37528C70.9425 10.8889 70.0141 11.7298 68.8448 11.7298C67.6928 11.7298 66.73 10.8721 66.73 9.37528C66.73 7.86167 67.6928 7.0376 68.8448 7.0376C70.0141 7.0376 70.9425 7.86167 70.9425 9.37528Z"
-                fill="currentColor"
-              />
-              <path
-                d="M74.5254 11.2757C74.5254 12.5707 75.6257 13.7648 77.4312 13.7648C78.6863 13.7648 79.4948 13.193 79.9244 12.5371C79.9244 12.8566 79.959 13.3107 80.0104 13.5293H82.1082C82.0569 13.2434 82.0053 12.6548 82.0053 12.2176V8.14761C82.0053 6.48263 81.0078 5.00269 78.3254 5.00269C76.0557 5.00269 74.8349 6.43217 74.6973 7.72717L76.7261 8.14761C76.7951 7.42445 77.3454 6.80219 78.3424 6.80219C79.3056 6.80219 79.7698 7.2899 79.7698 7.87853C79.7698 8.16444 79.6151 8.3999 79.1335 8.46716L77.0531 8.76988C75.6431 8.9717 74.5254 9.79576 74.5254 11.2757ZM77.9128 12.0998C77.1734 12.0998 76.8121 11.6289 76.8121 11.1412C76.8121 10.5021 77.2763 10.1826 77.8612 10.0985L79.7698 9.81259V10.1826C79.7698 11.6458 78.8756 12.0998 77.9128 12.0998Z"
-                fill="currentColor"
-              />
-              <path
-                d="M83.5879 11.2253C83.6908 12.1671 84.5679 13.7816 87.1127 13.7816C89.3309 13.7816 90.3968 12.4025 90.3968 11.0571C90.3968 9.84622 89.5545 8.85397 87.8865 8.51758L86.6827 8.26534C86.2185 8.18125 85.9092 7.92899 85.9092 7.52535C85.9092 7.05443 86.3905 6.70129 86.9924 6.70129C87.9555 6.70129 88.3165 7.32353 88.3855 7.81127L90.2939 7.39082C90.1906 6.49946 89.3826 5.00269 86.9753 5.00269C85.1524 5.00269 83.8115 6.23039 83.8115 7.71034C83.8115 8.87077 84.5505 9.82942 86.1843 10.1826L87.302 10.4349C87.9555 10.5694 88.2134 10.8721 88.2134 11.2421C88.2134 11.6794 87.8523 12.0662 87.0956 12.0662C86.0982 12.0662 85.5998 11.4607 85.5481 10.8048L83.5879 11.2253Z"
-                fill="currentColor"
-              />
-              <path
-                d="M93.8705 8.45033C93.9222 7.69354 94.5757 6.81898 95.7621 6.81898C97.0688 6.81898 97.6192 7.62627 97.6537 8.45033H93.8705ZM97.8773 10.603C97.602 11.343 97.0174 11.8644 95.9513 11.8644C94.8163 11.8644 93.8705 11.0739 93.8192 9.98079H99.8717C99.8717 9.94711 99.906 9.61077 99.906 9.29122C99.906 6.634 98.3414 5.00269 95.7277 5.00269C93.5612 5.00269 91.5664 6.71808 91.5664 9.35851C91.5664 12.1503 93.6125 13.7816 95.9341 13.7816C98.0146 13.7816 99.3559 12.5875 99.7859 11.158L97.8773 10.603Z"
-                fill="currentColor"
-              />
-              <path
-                d="M10.9654 18.5433C10.4732 19.1488 9.47531 18.8171 9.46345 18.0439L9.29004 6.73621H17.0731C18.4828 6.73621 19.2691 8.32684 18.3925 9.4054L10.9654 18.5433Z"
-                fill="url(#paint0_linear_52_607)"
-              />
-              <path
-                d="M10.9654 18.5433C10.4732 19.1488 9.47531 18.8171 9.46345 18.0439L9.29004 6.73621H17.0731C18.4828 6.73621 19.2691 8.32684 18.3925 9.4054L10.9654 18.5433Z"
-                fill="url(#paint1_linear_52_607)"
-                fill-opacity="0.2"
-              />
-              <path
-                d="M7.79949 0.34824C8.29166 -0.257305 9.28959 0.0744903 9.30145 0.847616L9.37744 12.1553H1.69177C0.281999 12.1553 -0.504254 10.5647 0.372382 9.48614L7.79949 0.34824Z"
-                fill="#3ECF8E"
-              />
-            </g>
-            <defs>
-              <linearGradient
-                id="paint0_linear_52_607"
-                x1="9.29004"
-                y1="9.24342"
-                x2="16.1582"
-                y2="12.192"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#249361" />
-                <stop offset="1" stopColor="#3ECF8E" />
-              </linearGradient>
-              <linearGradient
-                id="paint1_linear_52_607"
-                x1="6.22326"
-                y1="5.14143"
-                x2="9.26444"
-                y2="11.0016"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop />
-                <stop offset="1" stopOpacity="0" />
-              </linearGradient>
-              <clipPath id="clip0_52_607">
-                <rect width="100" height="19" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
-          <svg
-            width="96"
-            height="19"
-            viewBox="0 0 96 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M13.6 3.91875C13.4769 3.8 13.3538 3.74063 13.1692 3.8H11.3846C11.1385 3.8 10.8923 3.91875 10.7692 4.09688L6.95385 8.84688L4.86154 4.09688C4.73846 3.85938 4.49231 3.74063 4.24615 3.8H2.52308C2.21538 3.8 1.90769 3.97812 1.90769 4.275L0 14.725C0 14.8438 0 15.0219 0.0615385 15.1406C0.184615 15.2594 0.307692 15.3188 0.492308 15.2594H2.27692C2.58462 15.2594 2.89231 15.0219 2.89231 14.725L4 8.55L5.78462 12.5281C5.84615 12.7063 6.03077 12.825 6.21538 12.7656C6.4 12.7656 6.58462 12.6469 6.70769 12.5281L9.90769 8.55L8.8 14.725C8.73846 14.8438 8.8 15.0219 8.86154 15.1406C8.98462 15.2594 9.10769 15.3188 9.29231 15.2594H11.0769C11.3846 15.2594 11.6923 15.0219 11.6923 14.725L13.6 4.275C13.6615 4.15625 13.6615 4.0375 13.6 3.91875ZM21.7846 4.21562C21.7231 3.91875 21.4769 3.68125 21.1692 3.74063H18.8308C18.6462 3.74063 18.5231 3.74062 18.4 3.85938C18.2769 3.97813 18.2154 4.09687 18.1538 4.21562L12.5538 14.6062C12.4308 14.725 12.4308 14.9031 12.4923 15.0813C12.5538 15.2 12.7385 15.3188 12.8615 15.2594H14.8923C15.2 15.2594 15.5077 15.0813 15.5692 14.7844L16.4923 13.0625H20.2462L20.4923 14.725C20.4923 15.0219 20.7385 15.2594 21.0462 15.2C21.0462 15.2 21.0462 15.2 21.1077 15.2H23.0769C23.2615 15.2 23.3846 15.1406 23.5077 15.0219C23.6308 14.9031 23.6308 14.725 23.6308 14.5469L21.7846 4.21562ZM17.5385 10.6281L19.5692 6.70937L20.1231 10.6281H17.5385ZM30.5846 9.14375L35.5692 4.45312C35.6923 4.33437 35.7538 4.15625 35.7538 3.97812C35.6923 3.8 35.5692 3.68125 35.3846 3.74063H33.1692C32.8615 3.8 32.5538 3.91875 32.3692 4.15625L28.6769 7.6L29.2923 4.275C29.3538 4.15625 29.2923 3.97813 29.2308 3.85938C29.1077 3.74062 28.9846 3.68125 28.8 3.74063H26.8923C26.5846 3.74063 26.2769 3.91875 26.2769 4.21562L24.3692 14.6656C24.3077 14.7844 24.3692 14.9625 24.4308 15.0813C24.5538 15.2 24.6769 15.2594 24.8615 15.2H26.7692C27.0769 15.2 27.3846 15.0219 27.3846 14.725L28.1846 10.45L30.7692 14.7844C30.8923 15.0813 31.1385 15.2594 31.5077 15.2594H33.4769C33.6615 15.2594 33.8462 15.2 33.9077 15.0219C33.9692 14.8438 33.9692 14.6656 33.8462 14.5469L30.5846 9.14375ZM43.2615 8.37187C43.1385 8.25313 43.0154 8.25313 42.8923 8.25313H38.7692L39.1385 6.23438H43.5077C43.8154 6.23438 44.1231 6.05625 44.1231 5.7L44.3692 4.33437C44.4308 4.21563 44.3692 4.0375 44.3077 3.91875C44.1846 3.8 44.0615 3.74063 43.8769 3.8H37.1077C36.8 3.8 36.5538 3.97812 36.4923 4.275L34.5846 14.725C34.5231 14.8438 34.5846 15.0219 34.6462 15.1406C34.7692 15.2594 34.8923 15.3188 35.0769 15.2594H41.9077C42.2154 15.2594 42.5231 15.0219 42.5231 14.725L42.7692 13.3594C42.8308 13.2406 42.7692 13.0625 42.7077 12.9437C42.5846 12.825 42.4615 12.7656 42.2769 12.825H37.9077L38.3385 10.6281H42.4615C42.7692 10.6281 43.0769 10.3906 43.0769 10.0938L43.3231 8.7875C43.3846 8.60938 43.3231 8.49063 43.2615 8.37187ZM53.1692 4.21562C52.1231 3.74062 50.9538 3.50312 49.7846 3.5625C48.4923 3.50312 47.2615 3.85938 46.2154 4.5125C45.2923 5.16563 44.8 6.29375 44.8615 7.42188C44.8 8.13437 45.1077 8.84688 45.6615 9.38125C46.2769 9.91563 47.0154 10.3312 47.8154 10.5687C48.3077 10.7469 48.7385 10.925 49.1692 11.1625C49.4154 11.2812 49.6 11.5188 49.6 11.8156C49.6 12.2312 49.3538 12.5875 48.9231 12.7063C48.4308 12.8844 47.8769 13.0031 47.3231 13.0031C46.4615 13.0031 45.6615 12.825 44.9231 12.5281C44.6154 12.4094 44.3077 12.5281 44.1846 12.825C44.1846 12.825 44.1846 12.825 44.1846 12.8844L43.5077 14.1312C43.3846 14.3094 43.4462 14.6062 43.6308 14.7844L43.6923 14.8438C44.1846 15.0813 44.7385 15.2594 45.2923 15.3781C46.0308 15.4969 46.7692 15.5563 47.5077 15.5563C48.8 15.6156 50.0923 15.2594 51.2 14.5469C52.1846 13.8344 52.7385 12.7656 52.6769 11.5781C52.6769 11.1625 52.6154 10.8063 52.4308 10.45C52.2462 10.0938 52 9.79688 51.6923 9.55937C51.3846 9.32188 51.0769 9.14375 50.7692 8.96562C50.4615 8.7875 50.0923 8.60938 49.6 8.43125C49.1077 8.25313 48.6769 8.01562 48.2462 7.77813C48 7.65938 47.8769 7.42188 47.8769 7.18438C47.8769 6.47188 48.4923 6.11562 49.7846 6.11562C50.5231 6.11562 51.2615 6.23438 51.9385 6.47187C52.2462 6.59062 52.5538 6.47188 52.6769 6.23438V6.175L53.3538 4.9875C53.4769 4.75 53.4154 4.5125 53.2308 4.33437C53.1692 4.21563 53.1692 4.21562 53.1692 4.21562ZM70.0308 3.74063H68.0615C67.7538 3.74063 67.4462 3.91875 67.3846 4.21562L65.2923 9.025L64.2462 11.6375L64.0615 9.025L63.6923 4.21562C63.6923 3.91875 63.4462 3.68125 63.1385 3.74063H63.0769H61.4154C61.1077 3.74063 60.8 3.91875 60.6769 4.21562L58.4615 9.025L57.3538 11.6375L57.2308 9.08438L56.9231 4.275C56.9231 3.97812 56.6769 3.74063 56.3692 3.8H56.3077H54.4C54.2769 3.8 54.1539 3.85938 54.0308 3.91875C53.9077 4.0375 53.8462 4.275 53.9077 4.45312L54.9538 14.8438C54.9538 15.1406 55.2 15.3781 55.5077 15.3187H55.5692H57.6615C57.9692 15.3187 58.2769 15.1406 58.4 14.8438L60.5538 10.2719L61.4769 8.075L61.6615 10.2125L62.1538 14.7844C62.1538 15.0813 62.4 15.3187 62.7077 15.3187H62.7692H64.8615C65.1692 15.3187 65.4769 15.1406 65.6 14.8438L70.4615 4.45312C70.5231 4.33437 70.5846 4.15625 70.4615 3.97812C70.3385 3.8 70.2154 3.74063 70.0308 3.74063ZM85.9077 3.74063H79.2615C78.9538 3.74063 78.6462 3.91875 78.6462 4.21562L76.7385 14.6656C76.6769 14.7844 76.7385 14.9625 76.8 15.0813C76.9231 15.2 77.0462 15.2594 77.2308 15.2H79.0769C79.3846 15.2 79.6923 14.9625 79.6923 14.6656L80.3692 10.8063H84.4923C84.8 10.8063 85.1077 10.6281 85.1077 10.2719L85.3538 8.90625C85.4154 8.7875 85.3539 8.60938 85.2923 8.49063C85.1692 8.37187 85.0462 8.3125 84.8615 8.37187H80.8L81.2308 6.11562H85.5385C85.8462 6.11562 86.1538 5.9375 86.1538 5.64062L86.4 4.275C86.4615 4.15625 86.4 3.97813 86.3385 3.85938C86.2154 3.8 86.0308 3.74063 85.9077 3.74063ZM95.9385 3.91875C95.8154 3.8 95.6923 3.74063 95.5077 3.8H87.6923C87.3846 3.8 87.1385 3.97813 87.0769 4.33437L86.7692 5.75938C86.7077 5.87812 86.7692 6.05625 86.8308 6.175C86.9538 6.29375 87.0769 6.35313 87.2615 6.29375H89.6L88.0615 14.6656C88 14.7844 88.0615 14.9625 88.1231 15.0813C88.2462 15.2 88.3692 15.2594 88.5538 15.2H90.4615C90.7692 15.2 91.0769 14.9625 91.0769 14.6656L92.6154 6.29375H95.0154C95.3231 6.29375 95.6308 6.05625 95.6308 5.75938L95.8769 4.275C96 4.15625 96 4.0375 95.9385 3.91875ZM71.8154 6.35313H73.0462L71.9385 10.3313C71.8769 10.5094 72 10.6281 72.1231 10.6875H72.1846H72.7385C72.9231 10.6875 73.0462 10.6281 73.1077 10.45L76.8615 4.39375C76.9846 4.21563 76.9231 3.91875 76.6769 3.8C76.6154 3.74063 76.5538 3.74063 76.4308 3.74063H75.0769L77.2308 0.653125C77.3539 0.475 77.2923 0.178125 77.1077 0.059375C77.1692 0 77.0462 0 76.9846 0H73.5385C73.2923 0 73.0462 0.178125 72.9846 0.415625L71.4462 5.75938C71.3846 5.99687 71.5077 6.23438 71.7538 6.29375C71.7538 6.35313 71.8154 6.35313 71.8154 6.35313ZM73.3538 12.4094H71.3846C71.1385 12.4094 70.8923 12.5875 70.8308 12.825L70.3385 14.725C70.2769 14.9625 70.4 15.2 70.6462 15.2594C70.7077 15.2594 70.7077 15.2594 70.7692 15.2594H72.7385C72.9846 15.2594 73.2308 15.0813 73.2923 14.8438L73.7846 12.9437C73.8462 12.7062 73.7231 12.4688 73.4769 12.4094C73.4154 12.4094 73.4154 12.4094 73.3538 12.4094Z"
-              fill="#F02EA6"
-            />
-          </svg>
-        </div>
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
-          <svg
-            width="70"
-            height="17"
-            viewBox="0 0 77 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-neutral-900 dark:text-neutral-100"
-          >
-            <g clipPath="url(#clip0_52_626)">
-              <path
-                d="M0.97168 17.8125V1.1875H8.3163C9.34297 1.1875 10.2749 1.425 11.112 1.9C11.9491 2.35917 12.6046 2.98458 13.0785 3.77625C13.5681 4.56792 13.8129 5.47042 13.8129 6.48375C13.8129 7.48125 13.5681 8.39167 13.0785 9.215C12.6046 10.0225 11.9491 10.6637 11.112 11.1387C10.2749 11.6137 9.34297 11.8512 8.3163 11.8512H4.40707V17.8125H0.97168ZM10.3775 17.8125L6.1603 10.3075L9.80891 9.71375L14.5 17.8362L10.3775 17.8125ZM4.40707 8.95375H8.15045C8.57691 8.95375 8.94809 8.85875 9.26399 8.66875C9.59568 8.46292 9.8484 8.18583 10.0221 7.8375C10.1959 7.47334 10.2828 7.06959 10.2828 6.62625C10.2828 6.15125 10.1801 5.73959 9.97476 5.39125C9.76943 5.04292 9.46932 4.77375 9.07445 4.58375C8.67958 4.37792 8.22153 4.275 7.7003 4.275H4.40707V8.95375Z"
-                fill="currentColor"
-              />
-              <path
-                d="M21.3865 18.05C20.0281 18.05 18.8355 17.7729 17.8088 17.2187C16.798 16.6645 16.0083 15.9045 15.4396 14.9387C14.8868 13.9729 14.6104 12.8645 14.6104 11.6137C14.6104 10.6321 14.7684 9.7375 15.0842 8.93C15.4001 8.1225 15.8424 7.42584 16.411 6.84C16.9796 6.23834 17.6509 5.77917 18.4249 5.4625C19.2146 5.13 20.0675 4.96375 20.9837 4.96375C21.8366 4.96375 22.6263 5.12209 23.3529 5.43875C24.0795 5.75542 24.7034 6.19875 25.2246 6.76875C25.7616 7.32292 26.1723 7.98792 26.4566 8.76375C26.7409 9.52375 26.8672 10.3471 26.8357 11.2337L26.812 12.2787H16.7428L16.1977 10.2125H24.04L23.6609 10.64V10.1175C23.6293 9.69 23.4871 9.31 23.2344 8.9775C22.9975 8.62917 22.6895 8.36 22.3105 8.17C21.9314 7.96417 21.5048 7.86125 21.031 7.86125C20.3361 7.86125 19.7438 7.99584 19.254 8.265C18.7802 8.53417 18.417 8.93 18.1642 9.4525C17.9115 9.975 17.7851 10.6083 17.7851 11.3525C17.7851 12.1125 17.9431 12.7695 18.2591 13.3237C18.5908 13.8779 19.0488 14.3133 19.6332 14.63C20.2334 14.9308 20.9362 15.0812 21.7417 15.0812C22.2946 15.0812 22.8001 14.9942 23.2582 14.82C23.7161 14.6458 24.2057 14.345 24.7271 13.9175L26.3382 16.1737C25.8801 16.5854 25.3746 16.9337 24.8219 17.2187C24.269 17.4879 23.7004 17.6937 23.1159 17.8362C22.5315 17.9787 21.9551 18.05 21.3865 18.05Z"
-                fill="currentColor"
-              />
-              <path
-                d="M32.354 18.05C31.1851 18.05 30.1426 17.86 29.2266 17.48C28.3263 17.0842 27.5997 16.5458 27.0469 15.865L29.1555 14.06C29.6293 14.5825 30.1663 14.9625 30.7666 15.2C31.3668 15.4217 31.9669 15.5325 32.5672 15.5325C32.8041 15.5325 33.0173 15.5088 33.2069 15.4613C33.4122 15.398 33.586 15.3188 33.7281 15.2238C33.8703 15.113 33.973 14.9863 34.0361 14.8438C34.1151 14.6855 34.1546 14.5192 34.1546 14.345C34.1546 13.9967 34.0124 13.7275 33.7281 13.5375C33.5702 13.4425 33.3253 13.3396 32.9936 13.2288C32.662 13.1021 32.2355 12.9675 31.7143 12.825C30.9087 12.6192 30.2216 12.3817 29.653 12.1125C29.1002 11.8275 28.658 11.5109 28.3263 11.1625C28.042 10.83 27.8208 10.4738 27.6629 10.0938C27.5207 9.69797 27.4496 9.26255 27.4496 8.78755C27.4496 8.21755 27.576 7.70297 27.8287 7.2438C28.0814 6.7688 28.429 6.36505 28.8712 6.03255C29.3293 5.70005 29.8505 5.44672 30.4349 5.27255C31.0192 5.08255 31.6352 4.98755 32.2829 4.98755C32.9305 4.98755 33.5623 5.06672 34.1783 5.22505C34.7943 5.38339 35.3629 5.61297 35.8841 5.9138C36.4211 6.1988 36.8871 6.53922 37.282 6.93505L35.4813 8.93005C35.197 8.66088 34.8733 8.41547 34.51 8.1938C34.1625 7.97214 33.7992 7.79797 33.4201 7.6713C33.041 7.54464 32.7014 7.4813 32.4013 7.4813C32.1328 7.4813 31.888 7.50505 31.6669 7.55255C31.4616 7.60005 31.2878 7.67922 31.1456 7.79005C31.0035 7.88505 30.893 8.0038 30.814 8.1463C30.7508 8.2888 30.7192 8.44713 30.7192 8.6213C30.7192 8.79547 30.7586 8.96172 30.8376 9.12005C30.9324 9.27839 31.0588 9.41297 31.2167 9.5238C31.3905 9.6188 31.6432 9.72964 31.9749 9.8563C32.3223 9.98297 32.7884 10.1255 33.3727 10.2838C34.1309 10.4896 34.7706 10.7192 35.2918 10.9725C35.8288 11.2259 36.2552 11.5188 36.5712 11.8513C36.8397 12.1363 37.0371 12.4608 37.1635 12.825C37.2899 13.1892 37.353 13.593 37.353 14.0363C37.353 14.8121 37.1319 15.5008 36.6896 16.1025C36.2632 16.7042 35.6709 17.1792 34.9127 17.5275C34.1546 17.8758 33.3016 18.05 32.354 18.05Z"
-                fill="currentColor"
-              />
-              <path
-                d="M44.5143 18.05C43.1559 18.05 41.9634 17.7729 40.9367 17.2187C39.9259 16.6645 39.1361 15.9045 38.5675 14.9387C38.0147 13.9729 37.7383 12.8645 37.7383 11.6137C37.7383 10.6321 37.8962 9.7375 38.2121 8.93C38.5281 8.1225 38.9703 7.42584 39.5389 6.84C40.1075 6.23834 40.7788 5.77917 41.5527 5.4625C42.3425 5.13 43.1955 4.96375 44.1115 4.96375C44.9644 4.96375 45.7542 5.12209 46.4807 5.43875C47.2073 5.75542 47.8312 6.19875 48.3524 6.76875C48.8894 7.32292 49.3001 7.98792 49.5844 8.76375C49.8687 9.52375 49.9951 10.3471 49.9635 11.2337L49.9398 12.2787H39.8706L39.3257 10.2125H47.1678L46.7887 10.64V10.1175C46.7571 9.69 46.615 9.31 46.3623 8.9775C46.1254 8.62917 45.8174 8.36 45.4383 8.17C45.0592 7.96417 44.6327 7.86125 44.1589 7.86125C43.4639 7.86125 42.8716 7.99584 42.382 8.265C41.9081 8.53417 41.5448 8.93 41.2921 9.4525C41.0394 9.975 40.9131 10.6083 40.9131 11.3525C40.9131 12.1125 41.071 12.7695 41.3869 13.3237C41.7186 13.8779 42.1767 14.3133 42.7611 14.63C43.3613 14.9308 44.0641 15.0812 44.8697 15.0812C45.4225 15.0812 45.9279 14.9942 46.386 14.82C46.8441 14.6458 47.3337 14.345 47.8549 13.9175L49.466 16.1737C49.0079 16.5854 48.5025 16.9337 47.9497 17.2187C47.3968 17.4879 46.8282 17.6937 46.2438 17.8362C45.6594 17.9787 45.0829 18.05 44.5143 18.05Z"
-                fill="currentColor"
-              />
-              <path
-                d="M51.2646 17.8125V5.2488H54.4868L54.5816 7.8138L53.9182 8.0988C54.092 7.5288 54.4 7.01422 54.8422 6.55505C55.3003 6.08005 55.8452 5.70005 56.477 5.41505C57.1088 5.13005 57.7722 4.98755 58.4671 4.98755C59.4148 4.98755 60.2046 5.17755 60.8363 5.55755C61.484 5.93755 61.9658 6.51547 62.2816 7.2913C62.6133 8.0513 62.7791 8.99339 62.7791 10.1175V17.8125H59.4148V10.3788C59.4148 9.8088 59.3359 9.3338 59.1779 8.9538C59.02 8.5738 58.7751 8.29672 58.4434 8.12255C58.1276 7.94838 57.7326 7.86922 57.2588 7.88505C56.8797 7.88505 56.5243 7.94839 56.1926 8.07505C55.8768 8.18588 55.6003 8.35214 55.3634 8.5738C55.1424 8.79547 54.9606 9.0488 54.8185 9.3338C54.6922 9.6188 54.629 9.92755 54.629 10.26V17.8125H52.9705C52.6073 17.8125 52.2834 17.8125 51.9991 17.8125C51.7148 17.8125 51.4701 17.8125 51.2646 17.8125Z"
-                fill="currentColor"
-              />
-              <path
-                d="M69.7228 18.05C68.6172 18.05 67.6301 17.773 66.7613 17.2188C65.9083 16.6488 65.2292 15.8808 64.7237 14.915C64.2341 13.9333 63.9893 12.8013 63.9893 11.5188C63.9893 10.268 64.2341 9.15172 64.7237 8.17005C65.2292 7.17255 65.9083 6.39672 66.7613 5.84255C67.6301 5.27255 68.6172 4.98755 69.7228 4.98755C70.3073 4.98755 70.868 5.08255 71.405 5.27255C71.9578 5.44672 72.4474 5.69214 72.8739 6.0088C73.3162 6.32547 73.6716 6.68172 73.94 7.07755C74.2086 7.45755 74.3587 7.85339 74.3902 8.26505L73.5373 8.4313V0.237549H76.9253V17.8125H73.7268L73.5846 14.915L74.248 14.9863C74.2165 15.3821 74.0744 15.7621 73.8216 16.1263C73.5689 16.4905 73.2293 16.823 72.8028 17.1238C72.3922 17.4088 71.9184 17.6383 71.3813 17.8125C70.86 17.9708 70.3073 18.05 69.7228 18.05ZM70.4809 15.2475C71.1128 15.2475 71.6656 15.0892 72.1394 14.7725C72.6133 14.4558 72.9845 14.0205 73.2529 13.4663C73.5215 12.9121 73.6557 12.263 73.6557 11.5188C73.6557 10.7905 73.5215 10.1492 73.2529 9.59505C72.9845 9.04089 72.6133 8.60547 72.1394 8.2888C71.6656 7.97214 71.1128 7.8138 70.4809 7.8138C69.8492 7.8138 69.2963 7.97214 68.8225 8.2888C68.3645 8.60547 68.0012 9.04089 67.7326 9.59505C67.48 10.1492 67.3536 10.7905 67.3536 11.5188C67.3536 12.263 67.48 12.9121 67.7326 13.4663C68.0012 14.0205 68.3645 14.4558 68.8225 14.7725C69.2963 15.0892 69.8492 15.2475 70.4809 15.2475Z"
-                fill="currentColor"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_52_626">
-                <rect width="77" height="19" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-      </div>
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          I've also worked with or advised companies like Convex, Fauna,
-          Plasmic, and more about developer marketing, DevRel, and building
-          open-source communities.
-        </p>
-      </div>
+        {[
+          { name: 'Javascript', icon: ICONS.javascript },
+          { name: 'React', icon: ICONS.react },
+          { name: 'Node', icon: ICONS.node },
+          { name: 'Graphql', icon: ICONS.graphql }]
+          .map(item => (<div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
+          <span className='w-10 h-10'>
+          {item.icon}
+          </span>
+          {" "}
+          {item.name}
+        </div>))}
+
+      </div> */}
       <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">
         <li>
           <a
             className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://twitter.com/leeerob"
+            href="https://twitter.com/nhemnt"
           >
             <ArrowIcon />
             <p className="h-7 ml-2">follow me on twitter</p>
@@ -494,7 +471,7 @@ export default async function Page() {
             className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://leerob.substack.com"
+            href="https://nhemnt.substack.com"
           >
             <ArrowIcon />
             <p className="h-7 ml-2">get email updates</p>
