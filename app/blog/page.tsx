@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const allViews = await getViewsCount();
+  // const allViews = await getViewsCount();
 
   return (
     <section>
@@ -32,11 +32,11 @@ export default async function BlogPage() {
               <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
                 {post.title}
               </p>
-              <ViewCounter
+              {/* <ViewCounter
                 allViews={allViews}
                 slug={post.slug}
                 trackView={false}
-              />
+              /> */}
             </div>
           </Link>
         ))}

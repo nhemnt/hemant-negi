@@ -9,12 +9,15 @@ const navItems = {
   '/': {
     name: 'home',
   },
+  '/work': {
+    name: 'work',
+  },
   '/blog': {
     name: 'blog',
   },
-  '/guestbook': {
-    name: 'guestbook',
-  },
+  // '/guestbook': {
+  //   name: 'guestbook',
+  // },
 };
 
 export default function Navbar() {

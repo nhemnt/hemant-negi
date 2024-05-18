@@ -57,7 +57,7 @@ const recommendationsData = [
 
   {
     "name": "Kunal Bhatia",
-    "subHeading": "Software Engineer ReactJS at Quincus",
+    "subHeading": "Developer Lead at Persistent Systems",
     "text": "It is not that I'm exaggerating but it is actually true, Hemant, he is the kind a guy who understands the problem, analyse it, and then from its magically mind gives you a top notch solution which is both durable and adaptable. He is sharp minded and equally soft hearted. Think about it, html, css, react, node, that not it, it is just tip of the iceberg. A man with many skills and lot of energy is ready to rock the corporate world.",
     "avatar": kunal,
     "url": "https://www.linkedin.com/in/kunal-r-bhatia/",

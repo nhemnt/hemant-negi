@@ -1,0 +1,91 @@
+---
+title: 'Slackify: A Slack Bot'
+publishedAt: '2023-04-03'
+summary: 'A slack bot that pushes daily notifications to a slack channel about the progress of the users in the Advent of Code event.'
+---
+
+I'm excited to share a new open-source project I've been working on: [**Slackify**](https://slackify-flax.vercel.app/). This project is designed to enhance your Slack workspace experience by integrating custom functionalities that keep your team engaged and informed. Slackify comprises three main features: a private leaderboard bot for the Advent of Code, custom announcements, and certificate generation. Let's dive into each of these features and see how they can benefit your team.
+
+## Advent of Code Private Leaderboard Slack Bot
+
+<Image
+  alt="advent of code slack messages"
+  src={`/images/advent-of-code-slack.jpg`}
+  width={1000 / 1.5}
+  height={500 / 1.5}
+  style={{ margin: '0 auto' }}
+/>
+
+Never miss out on your team's Advent of Code rankings again with this feature. The Advent of Code Private Leaderboard Slack Bot allows you to easily view your team's progress directly within your Slack workspace. Here's how it works:
+
+  - **Seamless Integration**: The bot integrates with the Advent of Code event leaderboard, pulling in the latest data and formatting it into rich Slack messages.
+  - **Real-Time Updates**: Stay up-to-date with your team's standings and see who the top performers are with medal icons and star emojis that highlight achievements.
+  - **Enhanced Engagement**: By bringing the leaderboard into Slack, you can foster a healthy competitive spirit and keep everyone motivated throughout the coding challenge.
+
+## Slack Custom Announcements
+
+Communication is key to any team's success, and Slackify's Custom Announcements feature helps you keep everyone informed with tailored messages. This feature allows you to send personalized announcements to your Slack channels with ease.
+
+
+  - **Customizable Messages**: Create and customize your announcements using Slack's Block Kit. Add buttons, images, and other interactive elements to make your messages more engaging.
+    <Image
+    alt="advent of code customizable slack messages"
+    src={`/images/announcement-1.png`}
+    width={1000 / 1.5}
+    height={500 / 1.5}
+    style={{ margin: '0 auto' }}
+    />
+
+  - **Automated or One-Time**: Whether you need to automate regular updates or send one-time notifications, this feature has you covered. Simply trigger the API with a POST request to send your custom message.
+  <Image
+    alt="advent of code announcement messages"
+    src={`/images/announcement-2.png`}
+    width={1000 / 1.5}
+    height={500 / 1.5}
+    style={{ margin: '0 auto' }}
+    />
+  - **Interactive Elements**: Enhance your announcements with interactive components that encourage team participation and feedback.
+  <Image
+    alt="advent of code interactive elements messages"
+    src={`/images/announcement-3.png`}
+    width={1000 / 1.5}
+    height={500 / 1.5}
+    style={{ margin: '0 auto' }}
+    />
+
+## Generate Certificates
+
+Celebrating achievements is important, and what better way to do so than with personalized certificates? Slackify includes a certificate generation feature that allows you to create unique certificates for your team's accomplishments, especially useful for recognizing completion of coding challenges.
+
+ <Image
+    alt="advent of code certificates"
+    src={`/images/certificates.jpg`}
+    width={1000 / 1.5}
+    height={500 / 1.5}
+    style={{ margin: '0 auto' }}
+    />
+
+  - **Personalized Certificates**: Using the Canvas library and Cloudinary service, this feature generates certificates that include the recipient's name, topic, and rank.
+  - **Easy Integration**: The certificate generation process is seamless, automatically creating and distributing certificates based on the data you provide.
+  - **Visual Recognition**: Adding a visual element to your recognition efforts can significantly boost morale and encourage continued participation.
+
+
+## Why Slackify?
+
+Slackify is designed to streamline team interactions and recognition, making it easier to manage and celebrate your team's efforts. By integrating these features into your Slack workspace, you can:
+
+  - **Increase Engagement**: Keep your team actively involved in coding challenges and other activities with real-time updates and interactive announcements.
+  - **Enhance Communication**: Ensure everyone is on the same page with custom announcements tailored to your team's needs.
+  - **Recognize Achievements**: Boost morale by celebrating individual and team successes with personalized certificates.
+
+
+I created Slackify to address common challenges teams face in maintaining engagement and communication. By open-sourcing this project, I hope to provide a useful tool that can be customized to fit the unique needs of various teams.
+
+
+## Get Started with Slackify
+
+Ready to enhance your Slack workspace? Head over to the [**Slackify repository**](https://github.com/nhemnt/slackify/) on GitHub to get started. You’ll find detailed documentation on how to set up and customize each feature to suit your team's needs.
+
+By integrating Slackify into your workflow, you can create a more dynamic and engaging environment that helps your team thrive. I’m excited to see how Slackify can make a difference for your team, and I welcome any feedback or contributions to the project.
+
+Let's make team collaboration more fun and effective with Slackify!

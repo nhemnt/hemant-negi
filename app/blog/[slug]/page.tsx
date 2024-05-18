@@ -1,30 +1,28 @@
 import type { Metadata } from 'next';
+import { Suspense, cache } from 'react';
 import { notFound } from 'next/navigation';
-import { Mdx } from 'app/components/mdx';
-import { allBlogs } from 'contentlayer/generated';
-import { getTweets } from 'lib/twitter';
-import Balancer from 'react-wrap-balancer';
-import ViewCounter from '../view-counter';
-import { getViewsCount } from 'lib/metrics';
+import { CustomMDX } from 'app/components/mdx';
+import { getBlogPosts } from 'app/db/blog';
+
+import { unstable_noStore as noStore } from 'next/cache';
 
 export async function generateMetadata({
   params,
 }): Promise<Metadata | undefined> {
-  const post = allBlogs.find((post) => post.slug === params.slug);
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
     return;
   }
 
-  const {
+  let {
     title,
     publishedAt: publishedTime,
     summary: description,
     image,
-    slug,
-  } = post;
-  const ogImage = image
-    ? `https://hemantnegi.co${image}`
-    : `https://hemantnegi.co/og?title=${title}`;
+  } = post.metadata;
+  let ogImage = image
+    ? `https://leerob.io${image}`
+    : `https://leerob.io/og?title=${title}`;
 
   return {
     title,
@@ -34,7 +32,7 @@ export async function generateMetadata({
       description,
       type: 'article',
       publishedTime,
-      url: `https://hemantnegi.co/blog/${slug}`,
+      url: `https://leerob.io/blog/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -51,61 +49,83 @@ export async function generateMetadata({
 }
 
 function formatDate(date: string) {
-  const currentDate = new Date();
-  const targetDate = new Date(date);
-
-  const yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-  const monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-  const daysAgo = currentDate.getDate() - targetDate.getDate();
-
-  let formattedDate = '';
-
-  if (yearsAgo > 0) {
-    formattedDate = `${yearsAgo}y ago`;
-  } else if (monthsAgo > 0) {
-    formattedDate = `${monthsAgo}mo ago`;
-  } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`;
-  } else {
-    formattedDate = 'Today';
+  noStore();
+  let currentDate = new Date().getTime();
+  if (!date.includes('T')) {
+    date = `${date}T00:00:00`;
   }
-
-  const fullDate = targetDate.toLocaleString('en-us', {
+  let targetDate = new Date(date).getTime();
+  let timeDifference = Math.abs(currentDate - targetDate);
+  let daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  
+  let fullDate = new Date(date).toLocaleString('en-us', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
   });
 
-  return `${fullDate} (${formattedDate})`;
+  if (daysAgo < 1) {
+    return 'Today';
+  } else if (daysAgo < 7) {
+    return `${fullDate} (${daysAgo}d ago)`;
+  } else if (daysAgo < 30) {
+    const weeksAgo = Math.floor(daysAgo / 7)
+    return `${fullDate} (${weeksAgo}w ago)`;
+  } else if (daysAgo < 365) {
+    const monthsAgo = Math.floor(daysAgo / 30)
+    return `${fullDate} (${monthsAgo}mo ago)`;
+  } else {
+    const yearsAgo = Math.floor(daysAgo / 365)
+    return `${fullDate} (${yearsAgo}y ago)`;
+  }
 }
 
-export default async function Blog({ params }) {
-  const post = allBlogs.find((post) => post.slug === params.slug);
+export default function Blog({ params }) {
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
-  const [allViews, tweets] = await Promise.all([
-    getViewsCount(),
-    getTweets(post.tweetIds),
-  ]);
-
   return (
     <section>
-      <script type="application/ld+json" suppressHydrationWarning>
-        {JSON.stringify(post.structuredData)}
-      </script>
-      <h1 className="font-bold text-2xl tracking-tighter max-w-[650px]">
-        <Balancer>{post.title}</Balancer>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: post.metadata.title,
+            datePublished: post.metadata.publishedAt,
+            dateModified: post.metadata.publishedAt,
+            description: post.metadata.summary,
+            image: post.metadata.image
+              ? `https://leerob.io${post.metadata.image}`
+              : `https://leerob.io/og?title=${post.metadata.title}`,
+            url: `https://leerob.io/blog/${post.slug}`,
+            author: {
+              '@type': 'Person',
+              name: 'Lee Robinson',
+            },
+          }),
+        }}
+      />
+      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
+        {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.publishedAt)}
-        </p>
-        <ViewCounter allViews={allViews} slug={post.slug} trackView />
+        <Suspense fallback={<p className="h-5" />}>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            {formatDate(post.metadata.publishedAt)}
+          </p>
+        </Suspense>
       </div>
-      <Mdx code={post.body.code} tweets={tweets} />
+      <article className="prose prose-quoteless prose-neutral dark:prose-invert">
+        <CustomMDX source={post.content} />
+      </article>
     </section>
   );
 }
+
+
