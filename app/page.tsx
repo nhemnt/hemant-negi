@@ -7,6 +7,8 @@ import akhil from 'public/images/home/akhil_profile.jpeg'
 import kunal from 'public/images/home/kunal_bhatia_profile.jpeg'
 import fareed from 'public/images/home/fareed_profile.jpeg'
 import themring from 'public/images/home/themring_profile.jpeg'
+import vishal from 'public/images/home/vishal_profile.jpeg'
+import sagar from 'public/images/home/sagar_profile.jpeg'
 import hemant from 'public/images/home/hemant-negi.jpeg'
 import hemantLinkdin from 'public/images/home/hn-linkdin.jpeg'
 import hemantLeetocde from 'public/images/home/leetcode.jpeg'
@@ -75,11 +77,38 @@ const recommendationsData = [
   },
 
   {
+    "name": "Atul Pant",
+    "subHeading": "Senior Software Engineer",
+    "text": "Hemant is one of the most talented developer I have ever worked with in my 5 years as a developer. Not only is his work amazing and of the highest standard, he always delivers on the brief given and is an absolute pleasure to work with. He is just brilliant!",
+    "avatar": atul,
+    "url": "https://www.linkedin.com/in/atulpant20",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+  {
+    "name": "Sagar Samtani",
+    "subHeading": "Senior Technical Lead @ Paytm",
+    "text": "I've had the pleasure of working alongside Hemant on several projects and I can confidently say that he is an exceptional frontend developer. Hemant consistently delivers high-quality code, demonstrates a keen eye for design and has a deep understanding of modern frontend technologies like NextJs, React.js and JavaScript. He is a team player, always willing to collaborate and assist others, making him an invaluable asset to any development team. I highly recommend Hemant for any frontend development role.",
+    "avatar": sagar,
+    "url": "https://www.linkedin.com/in/sagar-samtani-5b89a245",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+  {
     "name": "Anshul Riyal",
     "subHeading": "Senior Software Engineer",
     "text": "“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” is the phrase that comes to mind when I think about Hemant. I’ve had the pleasure of knowing Hemant for the past 2 years. He is one of the most dedicated professionals I’ve worked with and is willing to go the extra mile to help you when needed. His expertise as a React.js developer is considerable and it helped our team to come up with more efficient solutions and develop different projects. I rarely come across real talents who stand out like Hemant. Hemant’s ability to handle multiple projects was unlike any I’ve seen before and made a dramatic increase in the productivity level of our company. No matter how tense a meeting, he made sure everyone left with a smile. Hemant would be a true asset for any organization and comes with my heartfelt recommendation.",
     "avatar": anshul,
     "url": "https://www.linkedin.com/in/anshul-riyal-i-code",
+    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
+    "social": "Linkedin"
+  },
+  {
+    "name": "Vishal Tomar",
+    "subHeading": "Senior Software Engineer(FrontEnd) at Paytm",
+    "text": "Hemant has extensive knowledge jn many frontend technologies such as Reactjs, Javascript, Nextjs, etc. He is also an amazing problem solver and is always finding new ways and technologies to build projects.",
+    "avatar": vishal,
+    "url": "https://www.linkedin.com/in/vishaltomar02",
     "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
     "social": "Linkedin"
   },
@@ -102,15 +131,9 @@ const recommendationsData = [
     "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
     "social": "Linkedin"
   },
-  {
-    "name": "Atul Pant",
-    "subHeading": "Senior Software Engineer",
-    "text": "Hemant is one of the most talented developer I have ever worked with in my 5 years as a developer. Not only is his work amazing and of the highest standard, he always delivers on the brief given and is an absolute pleasure to work with. He is just brilliant!",
-    "avatar": atul,
-    "url": "https://www.linkedin.com/in/atulpant20",
-    "socialImage": "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Logo.svg.original.svg",
-    "social": "Linkedin"
-  },
+  
+ 
+  
 
 ]
 
@@ -215,7 +238,7 @@ async function BlogLink({ url, name }) {
 }
 
 function Recommendations() {
-  const chunkSize = 4
+  const chunkSize = 5
   return (
     <div className={`grid grid-col-1 md:grid-cols-2 gap-4 my-8`}>
       {Array.from({ length: Math.ceil(recommendationsData.length / chunkSize) }, (_, index) => recommendationsData.slice(index * chunkSize, index * chunkSize + chunkSize)).map((recommendationGrid) => (
