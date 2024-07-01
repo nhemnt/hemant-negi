@@ -292,7 +292,7 @@ export default async function Page() {
       </h1>
       <p className="prose prose-neutral dark:prose-invert">
         {` I'm a developer who loves exploring new things. I currently
-        work as Senior Software Engineer at `}
+        work as Technical Lead at `}
         <span className="not-prose">
           <Badge href="https://paytm.com">
             Paytm

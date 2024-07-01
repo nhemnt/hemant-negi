@@ -16,17 +16,17 @@ export default function WorkPage() {
                 <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
                 <h2 className="font-medium text-xl mb-1 tracking-tighter">Paytm</h2>
                 <p className="text-neutral-600 dark:text-neutral-400 text-sm">
-                    Senior Software Engineer
+                    Technical Lead
                 </p>
                 <p>
-                    I joined <a href="https://paytm.com/">Paytm</a> in January 2022 as a Senior Software Engineer in Noida, where I have led critical projects and received notable recognitions for my contributions.
+                    I joined <a href="https://paytm.com/">Paytm</a> in January 2022 as a Senior Software Engineer in Noida, where I have led critical projects and received notable recognitions for my contributions. In 2024, I was promoted to Technical Lead.
                 </p>
                 <ul>
                     <li>
-                    Led the ongoing development of the <a href="https://paytm.com/blog/paytm-help/how-to-use-paytm-for-local-citybus-ticket-booking/" >City Bus</a> App, increasing user engagement by 25% through enhancements to its functionality and user experience.
+                    Led the ongoing development of the <a href="https://paytm.com/blog/paytm-help/how-to-use-paytm-for-local-citybus-ticket-booking/" >City Bus</a> Ticketing App using React, Redux, Redux Thunk, and SSR, increasing user engagement by 25% through enhancements to functionality and user experience, resulting in a daily booking volume of 50k.
                     </li>
                     <li>
-                    Consistently improved the <a href="https://www.paytmbank.com/cards">NCMC</a> App's frontend features, making it more user-friendly.
+                    Consistently improved <a href="https://www.paytmbank.com/cards">NCMC</a> Consumer App's frontend features for user-friendliness using React, Redux, Redux Thunk, SASS, Node.js, and NGINX, handling daily traffic of 10k users.
                     </li>
                 </ul>
                 <p>
@@ -34,7 +34,7 @@ export default function WorkPage() {
                 </p>
                 <ul>
                     <li>
-                    Developed and implemented multiple NCMC Admin Dashboards, significantly optimizing operational efficiency by reducing page loading speed by 50%.
+                    Developed and implemented multiple NCMC Admin Dashboards with React, React Query, SASS, Vite and S3, significantly optimising operational efficiency by reducing page loading speed by 50%.
                     </li>
                     <li>
                     Recognized with the <a href="https://paytm.com/blog/workplace/ultimate-guide-to-paytm-rewards-and-recognition-programme/#:~:text=Rising%20Stars%20are%20those%20who,custom%20goodies%20and%20attractive%20vouchers.">Rising Star Award at Paytm</a> in 2022 and received the Paytm Payments Infinity Award in 2023.
