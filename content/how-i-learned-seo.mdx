@@ -1,0 +1,47 @@
+---
+title: "How I Learned SEO"
+publishedAt: "2024-09-15"
+summary: "Building a web application while focusing on SEO optimization using Next.js Static Site Generation (SSG). The process includes setting up automatic content updates with revalidation, creating sitemaps, improving site accessibility, ensuring mobile responsiveness, and implementing internal links and backlinks to enhance search engine visibility."
+---
+
+As a developer, understanding SEO can make a significant impact on the visibility and reach of your website. When I set out to build [**Bluetrends**](https://bluetrends.vercel.app/), an application that tracks global trends from the past 24 hours, I used this opportunity to dive into the world of SEO. Here’s what I learned along the way.
+
+
+## 1. Using Static Site Generation (SSG) for SEO
+
+Bluetrends leverages the [SSG (Static Site Generation)](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation) approach using [Next.js](https://nextjs.org/). This was one of the first steps in improving SEO for my application. By statically generating pages, I ensured that the content was readily available to search engines without relying on JavaScript rendering.
+
+## 2. Automatically Refreshing Content
+
+Trends change frequently, and I wanted to ensure Bluetrends reflected the latest updates. To maintain fresh and relevant content, I used Next.js SSG (Static Site Generation) with the [revalidate option](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration). This allows the content to automatically refresh every hour, fetching the latest trends for different locations without needing a manual build process. This approach ensures my website stays up to date and SEO-friendly without frequent redeploys.
+
+## 3. Using robots.txt to Allow Search Engines to Crawl the Site
+
+I implemented a [robots.txt](https://bluetrends.vercel.app/robots.txt) file, a simple yet important step in SEO. This file explicitly tells search engine bots that they can crawl my site, ensuring that none of my pages are blocked from indexing. You can view the robots.txt file for Bluetrends here:
+https://bluetrends.vercel.app/robots.txt
+
+## 4. Creating and Submitting a Sitemap
+
+Next, I generated a [sitemap for Bluetrends](https://bluetrends.vercel.app/sitemap.xml) and included its URL in the robots.txt file. A sitemap acts as a guide for search engines, listing all the pages on my site so that bots can easily find and index them. I also submitted this sitemap to Google Search Console, ensuring my pages were being properly crawled and indexed. You can view the sitemap here:
+https://bluetrends.vercel.app/sitemap.xml
+
+## 5. Writing a Blog for SEO
+
+To enhance the SEO further, I started a [**blog**](https://bluetrends.vercel.app/blog) within Bluetrends. Blogging is a powerful SEO strategy because it regularly adds new content to your site, targets keywords related to your niche, and allows you to naturally include internal and external links.
+
+## 6. Following SEO Best Practices
+
+Throughout the development process, I adhered to several SEO best practices, including:
+
+  - **Accessibility**: I made sure Bluetrends was accessible to all users, improving its ranking potential.
+  - **Responsive Design**: I ensured the site worked seamlessly across multiple devices, from mobile to desktop. Search engines favor websites that offer a good user experience on all screen sizes.
+  - **Core Web Vitals**: Focusing on performance metrics like page load speed, interactivity, and visual stability was crucial in optimizing for SEO.
+  - **Meta Tags and Keywords**: I used the appropriate meta tags, including title, description, and relevant keywords to improve search rankings.
+
+## 7. Internal Linking for SEO
+
+Another important tactic I learned was internal linking. I made sure that different pages within Bluetrends were linked to each other, helping both users and search engines navigate the site more effectively.
+
+## 8. Building Backlinks
+
+Lastly, I understood the importance of backlinks. By getting links from websites with high domain authority and page authority, Bluetrends can build credibility in the eyes of search engines, boosting its SEO.
