@@ -125,8 +125,8 @@ const useCanvasCursor = () => {
   var ctx,
     f,
     e = 0,
-    pos = {},
-    lines = [],
+    pos: any = {},
+    lines: any = [],
     E = {
       debug: true,
       friction: 0.5,
@@ -143,29 +143,33 @@ const useCanvasCursor = () => {
   }
 
   const renderCanvas = function () {
-    ctx = document.getElementById("canvas").getContext("2d");
-    ctx.running = true;
-    ctx.frame = 1;
-    f = new n({
-      phase: Math.random() * 2 * Math.PI,
-      amplitude: 85,
-      frequency: 0.0015,
-      offset: 285,
-    });
-    document.addEventListener("mousemove", onMousemove);
-    document.addEventListener("touchstart", onMousemove);
-    document.body.addEventListener("orientationchange", resizeCanvas);
-    window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("focus", () => {
-      if (!ctx.running) {
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement | null;
+    if(canvas){
+        ctx = canvas.getContext("2d");
         ctx.running = true;
-        render();
-      }
-    });
-    window.addEventListener("blur", () => {
-      ctx.running = true;
-    });
-    resizeCanvas();
+        ctx.frame = 1;
+        f = new n({
+          phase: Math.random() * 2 * Math.PI,
+          amplitude: 85,
+          frequency: 0.0015,
+          offset: 285,
+        });
+        document.addEventListener("mousemove", onMousemove);
+        document.addEventListener("touchstart", onMousemove);
+        document.body.addEventListener("orientationchange", resizeCanvas);
+        window.addEventListener("resize", resizeCanvas);
+        window.addEventListener("focus", () => {
+          if (!ctx.running) {
+            ctx.running = true;
+            render();
+          }
+        });
+        window.addEventListener("blur", () => {
+          ctx.running = true;
+        });
+        resizeCanvas();
+    }
+    
   };
 
   useEffect(() => {
