@@ -49,7 +49,7 @@ const recommendationsData = [
   },
   {
     "name": "Muhammad Fareed",
-    "subHeading": "Full Stack Developer",
+    "subHeading": "CEO at Awwaltech",
     "text": "I had the pleasure of working with Hemant on a project. He is a great person. He is a good example of the saying that 'A software Engineer should not have language or technology barriers.' Hemant always used to explore new technologies like ReactJS, NextJS, and NodeJs. The best part is, He brings his research to completion.  I highly recommend him if you are looking for a Software Developer.",
     "avatar": fareed,
     "url": "https://www.linkedin.com/in/awwalfareed/",
@@ -59,7 +59,7 @@ const recommendationsData = [
 
   {
     "name": "Kunal Bhatia",
-    "subHeading": "Developer Lead at Persistent Systems",
+    "subHeading": "Project Lead at Persistent Systems",
     "text": "It is not that I'm exaggerating but it is actually true, Hemant, he is the kind a guy who understands the problem, analyse it, and then from its magically mind gives you a top notch solution which is both durable and adaptable. He is sharp minded and equally soft hearted. Think about it, html, css, react, node, that not it, it is just tip of the iceberg. A man with many skills and lot of energy is ready to rock the corporate world.",
     "avatar": kunal,
     "url": "https://www.linkedin.com/in/kunal-r-bhatia/",
@@ -87,7 +87,7 @@ const recommendationsData = [
   },
   {
     "name": "Sagar Samtani",
-    "subHeading": "Senior Technical Lead @ Paytm",
+    "subHeading": "Sr. Lead Software Engineer at Coupa Software",
     "text": "I've had the pleasure of working alongside Hemant on several projects and I can confidently say that he is an exceptional frontend developer. Hemant consistently delivers high-quality code, demonstrates a keen eye for design and has a deep understanding of modern frontend technologies like NextJs, React.js and JavaScript. He is a team player, always willing to collaborate and assist others, making him an invaluable asset to any development team. I highly recommend Hemant for any frontend development role.",
     "avatar": sagar,
     "url": "https://www.linkedin.com/in/sagar-samtani-5b89a245",
@@ -105,7 +105,7 @@ const recommendationsData = [
   },
   {
     "name": "Vishal Tomar",
-    "subHeading": "Senior Software Engineer(FrontEnd) at Paytm",
+    "subHeading": "Computer Scientist-1 at Adobe",
     "text": "Hemant has extensive knowledge jn many frontend technologies such as Reactjs, Javascript, Nextjs, etc. He is also an amazing problem solver and is always finding new ways and technologies to build projects.",
     "avatar": vishal,
     "url": "https://www.linkedin.com/in/vishaltomar02",
