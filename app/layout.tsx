@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Sidebar from './components/sidebar';
 import { Analytics } from '@vercel/analytics/react';
-import CanvasCursor from './components/CanvasCursor';
 
 const graphik = localFont({
   src: [
@@ -77,7 +76,6 @@ export default function RootLayout({
           <Sidebar />
           {children}
           <Analytics />
-          <CanvasCursor />
         </main>
       </body>
     </html>

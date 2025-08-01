@@ -15,7 +15,7 @@ import hemantLeetocde from 'public/images/home/leetcode.jpeg'
 import hemantGithub from 'public/images/home/hemantGithub.png'
 import hemantBehance from 'public/images/home/behance.jpg'
 import hemantTwitter from 'public/images/home/twitter.jpg';
-import back from 'public/images/home/back.jpg';
+import running1 from 'public/images/home/running1.jpg';
 import handstand from 'public/images/home/handstand.jpg';
 import skipping from 'public/images/home/skipping.jpg';
 import running from 'public/images/home/running.jpg'
@@ -448,7 +448,7 @@ export default async function Page() {
         <div className="relative h-80">
           <Image
             alt="My badge on top of a pile of badges from a Vercel meetup we held"
-            src={back}
+            src={running1}
             fill
             sizes="(min-width: 768px) 213px, 33vw"
             priority
